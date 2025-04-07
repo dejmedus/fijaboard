@@ -6,7 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import { AuthProvider } from "./hooks/useAuth";
+import Navbar from "./components/navbar";
 import "./app.css";
 
 export const links = () => [
@@ -22,6 +23,16 @@ export const links = () => [
   },
 ];
 
+export function meta({}) {
+  return [
+    { title: "FijaBoard" },
+    {
+      name: "description",
+      content: "Find and collect great travel experiences",
+    },
+  ];
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -32,7 +43,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

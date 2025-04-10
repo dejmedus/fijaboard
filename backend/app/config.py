@@ -20,6 +20,12 @@ class Config(object):
     # not sure if we will need to set up cookie config
     # https://flask-login.readthedocs.io/en/latest/#cookie-settings
     # https://flask.palletsprojects.com/en/stable/config/#SESSION_COOKIE_HTTPONLY
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    SESSION_COOKIE_SECURE = False
+    REMEMBER_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_SAMESITE = 'Lax'
+    REMEMBER_COOKIE_SECURE = False
 
     # might cause problems in dev if 5173 is in use i'm geussing react-router would use a different port
     FRONTEND_URL = os.environ.get('FRONTEND_URL') or 'http://localhost:5173'

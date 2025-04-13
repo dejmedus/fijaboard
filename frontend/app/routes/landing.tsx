@@ -155,6 +155,136 @@ export default function Home (){
           </div>
         </div>
       </section>
+      <section className="py-12 bg-gray-100">
+        <div className="max-w-5xl mx-auto px-4">
+          {/* screenshot placeholder (idk what we're gonna acc put here) */}
+          <div className="bg-gray-200 rounded-lg p-16 mb-12 flex items-center justify-center">
+            <h2 className="text-4xl font-bold text-gray-800 text-center">
+              FIJA Screenshot #2<br />
+              Or Maybe A Video?
+            </h2>
+          </div>
+          
+          {/* trust badge */}
+          <div className="flex justify-center mb-4">
+            <span className="bg-orange-100 text-orange-800 text-sm font-medium px-4 py-1 rounded-full flex items-center">
+              Trusted By <span className="font-bold mx-1">150K+</span> Users 👍
+            </span>
+          </div>
+          
+          {/* header for testimonials */}
+          <h3 className="text-3xl font-bold text-center mb-2">Trusted By Many</h3>
+          <p className="text-gray-500 text-center mb-10">Add sentence here to summarize overall reviews.</p>
+          
+          {/* test row 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* test 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="Sam" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">Sam</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+            
+            {/* test 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="Jessica" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">Jessica</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+            
+            {/* test 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="John" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">John</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+          </div>
+          
+          {/* test row 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* test 4 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="Anna" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">Anna</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+            
+            {/* test 5 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="Sarah" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">Sarah</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+            
+            {/* test 6 */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full overflow-hidden flex-shrink-0">
+                  <img src="https://placehold.co/100" alt="Another User" className="w-full h-full object-cover" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold">Another User</h4>
+                  <div className="flex text-red-500">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm">Review here. Should be 2 lines long.</p>
+              <p className="text-gray-500 text-sm">Including input text here for filler.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

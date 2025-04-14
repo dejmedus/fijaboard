@@ -3,7 +3,6 @@ from flask_cors import CORS
 
 from app.config import Config
 
-
 # "_init__.py contains the application factory, and tells Python that directory should be treated as a package"
 # application factory: https://flask.palletsprojects.com/en/stable/patterns/appfactories/
 def create_app(config_class=Config):
@@ -21,7 +20,6 @@ def create_app(config_class=Config):
     login_manager.login_view = 'auth.login'
 
     # this is called by flask-login
-
     @login_manager.user_loader
     def load_user(user_id):
         from app.models.user import User
@@ -32,7 +30,11 @@ def create_app(config_class=Config):
     # app.config is how we access our config file app/config.py
     # "if credentials is set to include on and the request is cross-origin the server must set the Access-Control-Allow-Credentials and Access-Control-Allow-Origin response headers, or the browser will return a network error to the caller."
     # https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-    CORS(app, supports_credentials=True, origins=[app.config["FRONTEND_URL"]])
+    CORS(app, supports_credentials=True, origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173", 
+        app.config["FRONTEND_URL"]
+    ])
 
     # "A Blueprint is a way to organize a group of related views and other code"
     # register auth blueprints: https://flask.palletsprojects.com/en/stable/tutorial/views/#id2

@@ -6,7 +6,6 @@ export default function Home() {
   useEffect(() => {
     // react-router env vars are accessed with import.meta.env (like process.env)
     // VITE_BACKEND_URL comes from .env
-    // mv .env.example .env
     fetch(`${import.meta.env.VITE_BACKEND_URL}/api/`)
       .then((res) => res.json())
       .then((data) => setMessage(data.message))

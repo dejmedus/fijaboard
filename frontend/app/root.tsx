@@ -9,6 +9,7 @@ import {
 import { AuthProvider } from "./hooks/useAuth";
 import Navbar from "./components/navbar";
 import "./app.css";
+import Footer from "./components/footer";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -49,6 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </AuthProvider>
         <ScrollRestoration />
         <Scripts />
+        <Footer/>
       </body>
     </html>
   );

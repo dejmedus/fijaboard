@@ -35,7 +35,7 @@ export default function Navbar() {
   );
 }
 
-function NavLogo() {
+export function NavLogo() {
   return (
     <div className="flex-1 md:flex-none">
       <Link

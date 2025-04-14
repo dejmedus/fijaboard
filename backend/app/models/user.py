@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
         onupdate=datetime.now(timezone.utc))
 
     # relationship with Collections
-    collections = db.relationship('Collection', back_populates='user', cascade='all, delete-orphan')
+    # collections = db.relationship('Collection', back_populates='user', cascade='all, delete-orphan')
 
     
     # optional password management methods that Claude recommended :)

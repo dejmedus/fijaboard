@@ -15,10 +15,10 @@ class Collection(db.Model):
     # relationship with User
     # backpopulates will access other connected + dependent table records so there are cascading deletes 
     # and clean up join tables to prevent orphan records
-    # user = db.relationship('User', back_populates='collections')
+    user = db.relationship('User', back_populates='collections')
     
     # relationship with FijaLists through the fijalist_collection join table
-    # fijalists = db.relationship('FijaList', secondary='fijalist_collection', back_populates='collections')
+    fijalists = db.relationship('FijaList', secondary='fijalist_collection', back_populates='collections')
     
     def __repr__(self):
         return f'<Collection {self.id}: {self.name}>'

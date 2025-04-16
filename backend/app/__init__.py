@@ -46,6 +46,11 @@ def create_app(config_class=Config):
     # "After all models and tables are defined... create the table schema in the database"
     # https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/#create-the-tables
     with app.app_context():
+        from app.models.fijalist import FijaList
+        from app.models.tag import Tag
+        from app.models.collection import Collection
+        from app.models.fijalist_tag import FijaListTag
+        from app.models.fijalist_collection import FijaListCollection
         db.create_all()
 
     return app

@@ -39,7 +39,8 @@ export default function Catalog() {
     fetchItems();
   }, [page]);
 
-  // set up intersection observer for infinite scroll (this part is called the observer - this is an api that is used to detect when a user scrolls to the bottom of page)
+  // set up intersection observer for infinite scroll (this part is called the observer - InstersectionObserver is an api that is used to detect 
+  // when a user scrolls to the bottom of page)
   const lastItemRef = useCallback((node: HTMLDivElement | null) => {
     if (loading) return;
     
@@ -61,7 +62,7 @@ export default function Catalog() {
         <header className="flex items-center justify-between mb-4">
           {/* search bar */}
           <form role="search" className="relative flex-1 max-w-xl">
-            <label htmlFor="search-input" className="sr-only">Search collections</label>
+            <label htmlFor="search-input" className="sr-only">Search lists</label>
             <input
               id="search-input"
               type="search"
@@ -103,7 +104,7 @@ export default function Catalog() {
         </header>
 
         {/* filter nav */}
-        <nav className="flex space-x-2 mb-6 overflow-x-auto pb-2" aria-label="Collection filters">
+        <nav className="flex space-x-2 mb-6 overflow-x-auto pb-2" aria-label="List filters">
           <button role="tab" aria-selected="false" className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
             Filters
           </button>
@@ -138,7 +139,7 @@ export default function Catalog() {
         {/* main masonry gruid */}
         <section 
           className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
-          aria-label="Collection grid"
+          aria-label="List grid"
         >
           {items.map((item, index) => (
             <article 
@@ -150,7 +151,7 @@ export default function Catalog() {
                 <figure className="relative">
                   <img 
                     src={`https://source.unsplash.com/random/${Math.floor(Math.random() * 100 + 300)}x${item.height * 16}?sig=${item.id}`}
-                    alt={`Collection ${item.id + 1}`}
+                    alt={`List ${item.id + 1}`}
                     className="w-full h-full object-cover"
                     style={{ height: `${item.height}rem` }}
                   />
@@ -164,8 +165,8 @@ export default function Catalog() {
                   </button>
                 </figure>
                 <div className="p-4">
-                  <h2 className="font-semibold text-lg mb-1">Collection Title {item.id + 1}</h2>
-                  <p className="text-sm text-gray-500">Brief description of the collection goes here.</p>
+                  <h2 className="font-semibold text-lg mb-1">List Title {item.id + 1}</h2>
+                  <p className="text-sm text-gray-500">Brief description of the list goes here.</p>
                 </div>
               </div>
             </article>
@@ -177,10 +178,10 @@ export default function Catalog() {
           <div 
             className="flex justify-center my-8" 
             role="status"
-            aria-label="Loading more collections"
+            aria-label="Loading more listss"
           >
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-            <span className="sr-only">Loading more collections...</span>
+            <span className="sr-only">Loading more listss...</span>
           </div>
         )}
       </section>

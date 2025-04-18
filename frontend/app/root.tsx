@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import { AuthProvider } from "./hooks/useAuth";
+import { DataProvider } from "./hooks/useData";
 import Navbar from "./components/navbar";
 import "./app.css";
 import Footer from "./components/footer";
@@ -45,12 +46,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <AuthProvider>
-          <Navbar />
-          {children}
+          <DataProvider>
+            <Navbar />
+            {children}
+          </DataProvider>
         </AuthProvider>
         <ScrollRestoration />
         <Scripts />
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

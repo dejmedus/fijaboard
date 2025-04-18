@@ -1,5 +1,4 @@
 .DS_Store
-steps.md
-auth.md
-fix.md
+.vscode
 venv
+notes

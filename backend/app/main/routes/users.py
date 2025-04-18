@@ -26,6 +26,31 @@ def get_user(id):
         "username": user.username,
         "email": user.email,
         "profile_picture": user.profile_picture,
+        "collections": [{
+                "id": collection.id,
+                "name": collection.name,
+                "description": collection.description,
+                "is_private": collection.is_private,
+                "created_at": collection.created_at.isoformat(),
+                "updated_at": collection.updated_at.isoformat(),
+                "fijalists": [
+                    {
+                        "id": fijalist.id,
+                        "title": fijalist.title,
+                        "description": fijalist.description,
+                        "cover_image": fijalist.cover_image,
+                        "content": fijalist.content,
+                        "tags": [
+                            {
+                                "id": tag.id,
+                                "name": tag.name,
+                            }
+                            for tag in fijalist.tags
+                        ]
+                    }
+                    for fijalist in collection.fijalists
+                ]
+            } for collection in user.collections]
     }), 200
 
 @main.route('/users/<int:id>/collections', methods=['GET'])
@@ -45,7 +70,14 @@ def get_user_collections(id):
                 "title": fijalist.title,
                 "description": fijalist.description,
                 "cover_image": fijalist.cover_image,
-                "content": fijalist.content
+                "content": fijalist.content,
+                "tags": [
+                    {
+                        "id": tag.id,
+                        "name": tag.name,
+                    }
+                    for tag in fijalist.tags
+                ]
             }
             for fijalist in collection.fijalists
         ]
@@ -70,7 +102,14 @@ def get_user_collection(user_id, collection_id):
                 "title": fijalist.title,
                 "description": fijalist.description,
                 "cover_image": fijalist.cover_image,
-                "content": fijalist.content
+                "content": fijalist.content,
+                "tags": [
+                    {
+                        "id": tag.id,
+                        "name": tag.name,
+                    }
+                    for tag in fijalist.tags
+                ]
             }
             for fijalist in collection.fijalists
         ]

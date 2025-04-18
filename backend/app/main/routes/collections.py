@@ -23,7 +23,14 @@ def get_collections():
                 "title": fijalist.title,
                 "description": fijalist.description,
                 "cover_image": fijalist.cover_image,
-                "content": fijalist.content
+                "content": fijalist.content,
+                "tags": [
+                    {
+                        "id": tag.id,
+                        "name": tag.name,
+                    }
+                    for tag in fijalist.tags
+                ]
             }
             for fijalist in collection.fijalists
         ]
@@ -46,7 +53,14 @@ def get_collection_with_fijalists(collection_id):
                 "title": fijalist.title,
                 "description": fijalist.description,
                 "cover_image": fijalist.cover_image,
-                "content": fijalist.content
+                "content": fijalist.content,
+                "tags": [
+                    {
+                        "id": tag.id,
+                        "name": tag.name,
+                    }
+                    for tag in fijalist.tags
+                ]
             }
             for fijalist in collection.fijalists
         ]

@@ -82,16 +82,14 @@ export default function FilterBar({ selectedFilters, setSelectedFilters }: Filte
     <div className="mb-6">
       {/* main filter categories */}
       <div className="flex space-x-2 mb-2 overflow-x-auto pb-2">
-        <button
-          onClick={clearAllFilters}
-          className={`px-4 py-2 text-sm font-medium rounded-full hover:bg-gray-200 ${
-            selectedFilters.length > 0 
-              ? "bg-purple-100 text-purple-600 hover:bg-purple-200" 
-              : "bg-gray-100"
-          }`}
-        >
-          {selectedFilters.length > 0 ? `Clear Filters (${selectedFilters.length})` : "Filters"}
-        </button>
+        {selectedFilters.length > 0 && (
+          <button
+            onClick={clearAllFilters}
+            className="px-4 py-2 text-sm font-medium rounded-full bg-purple-100 text-purple-600 hover:bg-purple-200"
+          >
+            Clear Filters ({selectedFilters.length})
+          </button>
+        )}
         
         {Object.keys(filterCategories).map((category) => (
           <button

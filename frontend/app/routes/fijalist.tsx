@@ -1,24 +1,22 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import MasonryGrid from "../components/MasonryGrid";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function FijalistDetail() {
   const { id } = useParams<{ id: string }>();
-  const { fijalists } = useData();
+  const { fijalists, isLoading } = useData();
   
   const [currentFijalist, setCurrentFijalist] = useState<Fijalist | null>(null);
-  
-  // to display related lists w infinite scrolling
-  const [relatedLists, setRelatedLists] = useState<Fijalist[]>([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const observer = useRef<IntersectionObserver | null>(null);
 
   // get current fijalist based on ID from route params
   useEffect(() => {
-    if (id) {
-      const fijalist = fijalists.find(item => item.id === id);
+    if (id && fijalists.length > 0) {
+      // convert id to string for comparison since backend returns numbers but route params are strings
+      const fijalist = fijalists.find(item => String(item.id) === id);
       setCurrentFijalist(fijalist || null);
     }
   }, [id, fijalists]);
@@ -31,56 +29,56 @@ export default function FijalistDetail() {
     
     // find other fijalists with at least one matching tag, excluding current one
     return fijalists.filter(item => 
-      item.id !== currentFijalist.id && 
+      String(item.id) !== String(currentFijalist.id) && 
       item.tags && 
       item.tags.some(tag => currentTags.includes(tag.id))
     );
   }, [currentFijalist, fijalists]);
 
-  const fetchRelatedItems = useCallback(async () => {
-    if (!currentFijalist) return;
-    
-    setLoading(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    const allRelated = findRelatedLists();
-    const newItems = allRelated.slice(0, page * 6);
-    
-    setRelatedLists(newItems);
-    setLoading(false);
-  }, [currentFijalist, findRelatedLists, page]);
+  // use our custom hook for infinite scrolling
+  const { 
+    displayedItems: relatedLists, 
+    loading, 
+    lastItemRef 
+  } = useInfiniteScroll<Fijalist>({
+    items: currentFijalist ? findRelatedLists() : [],
+    pageSize: 6
+  });
 
-  // to load related lists when current fijalist changes
-  useEffect(() => {
-    fetchRelatedItems();
-  }, [fetchRelatedItems, page]);
+  // display appropriate loading/error states
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading data...</div>;
+  }
 
-  // same infinite scroll logic as catalog
-  const lastItemRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (loading) return;
-      
-      if (observer.current) observer.current.disconnect();
-      
-      observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          const allRelated = findRelatedLists();
-          if (page * 6 >= allRelated.length) {
-            observer.current?.disconnect();
-            return;
-          }
-          
-          setPage(prev => prev + 1);
-        }
-      });
-      
-      if (node) observer.current.observe(node);
-    },
-    [loading, page, findRelatedLists]
-  );
-
-  const getRandomHeight = () => Math.floor(Math.random() * (30 - 10 + 1) + 10);
+  if (fijalists.length > 0 && !currentFijalist) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="bg-purple-100 rounded-full p-3 mb-4">
+          <svg 
+            className="h-8 w-8 text-purple-600" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" 
+            />
+          </svg>
+        </div>
+        <h1 className="text-xl font-semibold mb-2">Fijalist Not Found</h1>
+        <p className="text-gray-600 mb-4">The fijalist you're looking for doesn't exist or has been removed.</p>
+        <Link 
+          to="/catalog" 
+          className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+        >
+          Back to Catalog
+        </Link>
+      </div>
+    );
+  }
 
   if (!currentFijalist) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -154,44 +152,11 @@ export default function FijalistDetail() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Related Lists</h2>
             
-            {/* same masonry grid as catalog */}
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-              {relatedLists.map((item, index) => (
-                <article
-                  key={item.id}
-                  ref={index === relatedLists.length - 1 ? lastItemRef : null}
-                  className="break-inside-avoid mb-4"
-                >
-                  <Link to={`/fijalist/${item.id}`}>
-                    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                      <figure className="relative">
-                        <img
-                          src={item.cover_image || 'https://via.placeholder.com/400x300?text=No+Image'}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                          style={{ height: `${getRandomHeight()}rem` }}
-                        />
-                      </figure>
-                      <div className="p-4">
-                        <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                        <p className="text-sm text-gray-500">{item.description}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
+            {/* masonry grid */}
+            <MasonryGrid items={relatedLists} lastItemRef={lastItemRef} />
             
-            {loading && (
-              <div
-                className="flex justify-center my-8"
-                role="status"
-                aria-label="Loading more lists"
-              >
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-                <span className="sr-only">Loading more lists...</span>
-              </div>
-            )}
+            {/* loading state */}
+            {loading && <LoadingSpinner />}
           </section>
         )}
       </div>

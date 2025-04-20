@@ -1,64 +1,25 @@
-// TO DISCUSS: should a location be entered as a primary action in the main catalog page,
-// or do we not want to limit it to location?
 // TODO: upon clicking on a list, it should show up as a modal so we don't lose our position on the page
 // or similar to Pinterest where it opens up a new view, and recommends similar things underneath
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router";
+import { useState } from "react";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import MasonryGrid from "../components/MasonryGrid";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Catalog() {
-  const { fijalists } = useData();
-
+  const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
-  const [items, setItems] = useState<Fijalist[]>(fijalists.slice(0, 10));
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const observer = useRef<IntersectionObserver | null>(null);
-
-  // so that the grid can randomize heights bw 10rem and 30rem across the grid
-  const getRandomHeight = () => Math.floor(Math.random() * (30 - 10 + 1) + 10);
-
-  const fetchItems = useCallback(async () => {
-    setLoading(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    const newItems = fijalists.slice((page - 1) * 10, page * 10);
-
-    setItems((prev) => [...prev, ...newItems]);
-
-    setLoading(false);
-  }, [page, fijalists]);
-
-  useEffect(() => {
-    fetchItems();
-  }, [page, fijalists]);
-
-  // set up intersection observer for infinite scroll (this part is called the observer - InstersectionObserver is an api that is used to detect
-  // when a user scrolls to the bottom of page)
-  const lastItemRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (loading) return;
-
-      if (observer.current) observer.current.disconnect();
-
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          if (page * 10 >= fijalists.length) {
-            observer.current?.disconnect();
-            return;
-          }
-
-          setPage((prev) => prev + 1);
-        }
-      });
-
-      if (node) observer.current.observe(node);
-    },
-    [loading, page, fijalists.length]
-  );
+  
+  const { 
+    displayedItems: items, 
+    loading, 
+    lastItemRef 
+  } = useInfiniteScroll<Fijalist>({
+    items: fijalists,
+    pageSize: 10
+  });
 
   return (
     <main className="min-h-screen bg-white">
@@ -198,71 +159,31 @@ export default function Catalog() {
           Create New Collection
         </button>
 
-        {/* main masonry grid */}
-        <section
-          className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4"
-          aria-label="List grid"
-        >
-          {items.map((item, index) => (
-            <article
-              key={item.id}
-              ref={index === items.length - 1 ? lastItemRef : null}
-              className="break-inside-avoid mb-4"
-            >
-              <Link to={`/fijalist/${item.id}`}>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <figure className="relative">
-                    <img
-                      src={item.cover_image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      style={{ height: `${getRandomHeight()}rem` }}
-                    />
-                    <button
-                      className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white"
-                      aria-label="Add to favorites"
-                      onClick={(e) => {
-                        e.preventDefault(); // Prevent triggering the Link
-                        // Add favorite functionality here
-                      }}
-                    >
-                      <svg
-                        className="h-5 w-5 text-gray-700"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                        />
-                      </svg>
-                    </button>
-                  </figure>
-                  <div className="p-4">
-                    <h2 className="font-semibold text-lg mb-1">{item.title}</h2>
-                    <p className="text-sm text-gray-500">{item.description}</p>
-                  </div>
-                </div>
-              </Link>
-            </article>
-          ))}
-        </section>
-
-        {/* loading state */}
-        {loading && (
-          <div
-            className="flex justify-center my-8"
-            role="status"
-            aria-label="Loading more lists"
-          >
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-            <span className="sr-only">Loading more lists...</span>
+        {/* show message when no items are available */}
+        {!isLoading && items.length === 0 && (
+          <div className="text-center py-12">
+            <div className="inline-flex justify-center items-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-semibold mb-2">No Lists Available</h2>
+            <p className="text-gray-600 mb-6">
+              No fijalists have been created yet. Click the button above to create one!
+            </p>
           </div>
         )}
+
+        {/* main masonry grid */}
+        {items.length > 0 && (
+          <section aria-label="List grid">
+            <MasonryGrid items={items} lastItemRef={lastItemRef} />
+          </section>
+        )}
+
+        {/* loading state */}
+        {loading && <LoadingSpinner />}
       </section>
     </main>
   );

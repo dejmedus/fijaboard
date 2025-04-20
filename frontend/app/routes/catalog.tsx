@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
@@ -6,10 +6,14 @@ import MasonryGrid from "../components/MasonryGrid";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
+import { useRestoreScrollPosition } from "../hooks/useScrollPosition";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
+  
+  // restore scroll position when returning to catalog -- is this something we want to implement???
+  useRestoreScrollPosition("catalog");
   
   // modal state
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);

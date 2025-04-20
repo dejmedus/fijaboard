@@ -7,6 +7,7 @@ import MasonryGrid from "../components/MasonryGrid";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
+import { saveScrollPosition } from "../hooks/useScrollPosition";
 
 export default function FijalistDetail() {
   const { id } = useParams<{ id: string }>();
@@ -62,6 +63,11 @@ export default function FijalistDetail() {
     pageSize: 6
   });
 
+  // handle click on the back button to save scroll position
+  const handleBackClick = () => {
+    saveScrollPosition("catalog");
+  };
+
   // display appropriate loading/error states
   if (isLoading) {
     return <div className="min-h-screen flex items-center justify-center">Loading data...</div>;
@@ -90,6 +96,7 @@ export default function FijalistDetail() {
         <Link 
           to="/catalog" 
           className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+          onClick={handleBackClick}
         >
           Back to Catalog
         </Link>
@@ -108,6 +115,7 @@ export default function FijalistDetail() {
         <Link 
           to="/catalog" 
           className="inline-flex items-center mb-6 text-purple-600 hover:text-purple-800"
+          onClick={handleBackClick}
         >
           <svg 
             className="w-5 h-5 mr-2" 

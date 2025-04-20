@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import type { Fijalist } from "~/lib/types";
+import { saveScrollPosition } from "../hooks/useScrollPosition";
 
 interface FijalistPreviewProps {
   fijalist: Fijalist;
@@ -11,6 +12,12 @@ export default function FijalistPreview({ fijalist, onClose }: FijalistPreviewPr
   const truncateContent = (content: string, maxLength = 300) => {
     if (content.length <= maxLength) return content;
     return content.substring(0, maxLength) + "...";
+  };
+
+  // handle click on the view full list button
+  const handleViewFullList = () => {
+    saveScrollPosition("catalog");
+    onClose();
   };
 
   return (
@@ -57,7 +64,7 @@ export default function FijalistPreview({ fijalist, onClose }: FijalistPreviewPr
         <Link
           to={`/fijalist/${String(fijalist.id)}`}
           className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
-          onClick={onClose}
+          onClick={handleViewFullList}
         >
           View Full List
         </Link>

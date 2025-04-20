@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
@@ -7,10 +7,12 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { useRestoreScrollPosition } from "../hooks/useScrollPosition";
+import FilterBar from "../components/FilterBar";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   
   // restore scroll position when returning to catalog -- is this something we want to implement???
   useRestoreScrollPosition("catalog");
@@ -29,13 +31,26 @@ export default function Catalog() {
   const handleClosePreview = () => {
     setIsPreviewOpen(false);
   };
+
+  // filter fijalists based on selected tags
+  const filteredFijalists = useMemo(() => {
+    if (selectedFilters.length === 0) return fijalists;
+    
+    return fijalists.filter(fijalist => 
+      // check if fijalist has any of the selected tags
+      selectedFilters.some(filterName => 
+        fijalist.tags && fijalist.tags.some(tag => tag.name === filterName)
+      )
+    );
+  }, [fijalists, selectedFilters]);
   
+  // use infinite scroll with filtered fijalists
   const { 
     displayedItems: items, 
     loading, 
     lastItemRef 
   } = useInfiniteScroll<Fijalist>({
-    items: fijalists,
+    items: filteredFijalists,
     pageSize: 10
   });
 
@@ -126,34 +141,11 @@ export default function Catalog() {
           </nav>
         </header>
 
-        {/* filter nav */}
-        <nav
-          className="flex space-x-2 mb-6 overflow-x-auto pb-2"
-          aria-label="List filters"
-        >
-          <button
-            role="tab"
-            aria-selected="false"
-            className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200"
-          >
-            Filters
-          </button>
-          <button className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
-            Trip Length
-          </button>
-          <button className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
-            Budget
-          </button>
-          <button className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
-            Season
-          </button>
-          <button className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
-            Expert Endorsed
-          </button>
-          <button className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-full hover:bg-gray-200">
-            Local Favourite
-          </button>
-        </nav>
+        {/* filter bar component */}
+        <FilterBar 
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
+        />
 
         {/* create new collection button */}
         <button
@@ -186,10 +178,24 @@ export default function Catalog() {
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold mb-2">No Lists Available</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {selectedFilters.length > 0 
+                ? "No Lists Match Your Filters" 
+                : "No Lists Available"}
+            </h2>
             <p className="text-gray-600 mb-6">
-              No fijalists have been created yet. Click the button above to create one!
+              {selectedFilters.length > 0 
+                ? "Try removing some filters or create a new list that matches your criteria." 
+                : "No fijalists have been created yet. Click the button above to create one!"}
             </p>
+            {selectedFilters.length > 0 && (
+              <button
+                onClick={() => setSelectedFilters([])}
+                className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+              >
+                Clear All Filters
+              </button>
+            )}
           </div>
         )}
 

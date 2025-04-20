@@ -4,6 +4,7 @@
 // or similar to Pinterest where it opens up a new view, and recommends similar things underneath
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
 
@@ -208,39 +209,45 @@ export default function Catalog() {
               ref={index === items.length - 1 ? lastItemRef : null}
               className="break-inside-avoid mb-4"
             >
-              <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <figure className="relative">
-                  <img
-                    src={item.cover_image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                    style={{ height: `${getRandomHeight()}rem` }}
-                  />
-                  <button
-                    className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white"
-                    aria-label="Add to favorites"
-                  >
-                    <svg
-                      className="h-5 w-5 text-gray-700"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+              <Link to={`/fijalist/${item.id}`}>
+                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <figure className="relative">
+                    <img
+                      src={item.cover_image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      style={{ height: `${getRandomHeight()}rem` }}
+                    />
+                    <button
+                      className="absolute top-2 right-2 p-2 rounded-full bg-white/80 hover:bg-white"
+                      aria-label="Add to favorites"
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent triggering the Link
+                        // Add favorite functionality here
+                      }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                      />
-                    </svg>
-                  </button>
-                </figure>
-                <div className="p-4">
-                  <h2 className="font-semibold text-lg mb-1">{item.title}</h2>
-                  <p className="text-sm text-gray-500">{item.description}</p>
+                      <svg
+                        className="h-5 w-5 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
+                      </svg>
+                    </button>
+                  </figure>
+                  <div className="p-4">
+                    <h2 className="font-semibold text-lg mb-1">{item.title}</h2>
+                    <p className="text-sm text-gray-500">{item.description}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </article>
           ))}
         </section>

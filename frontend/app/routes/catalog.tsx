@@ -1,16 +1,30 @@
-// TODO: upon clicking on a list, it should show up as a modal so we don't lose our position on the page
-// or similar to Pinterest where it opens up a new view, and recommends similar things underneath
-
 import { useState } from "react";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import MasonryGrid from "../components/MasonryGrid";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Modal from "../components/Modal";
+import FijalistPreview from "../components/FijalistPreview";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
+  
+  // modal state
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [selectedFijalist, setSelectedFijalist] = useState<Fijalist | null>(null);
+  
+  // open preview modal with selected fijalist
+  const handleFijalistClick = (fijalist: Fijalist) => {
+    setSelectedFijalist(fijalist);
+    setIsPreviewOpen(true);
+  };
+  
+  // close the preview modal
+  const handleClosePreview = () => {
+    setIsPreviewOpen(false);
+  };
   
   const { 
     displayedItems: items, 
@@ -178,13 +192,31 @@ export default function Catalog() {
         {/* main masonry grid */}
         {items.length > 0 && (
           <section aria-label="List grid">
-            <MasonryGrid items={items} lastItemRef={lastItemRef} />
+            <MasonryGrid 
+              items={items} 
+              lastItemRef={lastItemRef} 
+              onItemClick={handleFijalistClick}
+            />
           </section>
         )}
 
         {/* loading state */}
         {loading && <LoadingSpinner />}
       </section>
+      
+      {/* fijalist preview modal */}
+      <Modal 
+        isOpen={isPreviewOpen} 
+        onClose={handleClosePreview}
+        title="List Preview"
+      >
+        {selectedFijalist && (
+          <FijalistPreview 
+            fijalist={selectedFijalist} 
+            onClose={handleClosePreview} 
+          />
+        )}
+      </Modal>
     </main>
   );
 }

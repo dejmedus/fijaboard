@@ -5,12 +5,29 @@ import type { Fijalist } from "~/lib/types";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import MasonryGrid from "../components/MasonryGrid";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Modal from "../components/Modal";
+import FijalistPreview from "../components/FijalistPreview";
 
 export default function FijalistDetail() {
   const { id } = useParams<{ id: string }>();
   const { fijalists, isLoading } = useData();
   
   const [currentFijalist, setCurrentFijalist] = useState<Fijalist | null>(null);
+  
+  // modal state for previewing related lists
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [selectedFijalist, setSelectedFijalist] = useState<Fijalist | null>(null);
+  
+  // handle clicking on a related list
+  const handleRelatedListClick = (fijalist: Fijalist) => {
+    setSelectedFijalist(fijalist);
+    setIsPreviewOpen(true);
+  };
+  
+  // close the preview modal
+  const handleClosePreview = () => {
+    setIsPreviewOpen(false);
+  };
 
   // get current fijalist based on ID from route params
   useEffect(() => {
@@ -152,14 +169,30 @@ export default function FijalistDetail() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Related Lists</h2>
             
-            {/* masonry grid */}
-            <MasonryGrid items={relatedLists} lastItemRef={lastItemRef} />
+            <MasonryGrid 
+              items={relatedLists} 
+              lastItemRef={lastItemRef} 
+              onItemClick={handleRelatedListClick}
+            />
             
-            {/* loading state */}
             {loading && <LoadingSpinner />}
           </section>
         )}
       </div>
+      
+      {/* modal for previewing related lists */}
+      <Modal 
+        isOpen={isPreviewOpen} 
+        onClose={handleClosePreview}
+        title="List Preview"
+      >
+        {selectedFijalist && (
+          <FijalistPreview 
+            fijalist={selectedFijalist} 
+            onClose={handleClosePreview} 
+          />
+        )}
+      </Modal>
     </main>
   );
 } 

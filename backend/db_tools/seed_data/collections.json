@@ -1,0 +1,58 @@
+[
+    {
+      "user_id": 1,
+      "name": "Tavi's Foodie Collection",
+      "description": "A collection of the best food experiences and culinary adventures from around the world",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 1,
+      "name": "Tavi's Nature Collection",
+      "description": "Beautiful outdoor experiences and natural wonders worth exploring",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 2,
+      "name": "Myshkin's Literary Journeys",
+      "description": "Following the footsteps of famous authors and their inspirations",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 2,
+      "name": "Myshkin's Hidden Gems",
+      "description": "Off-the-beaten-path locations and experiences that tourists often miss",
+      "is_private": true,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 3,
+      "name": "Adventure Bucket List",
+      "description": "Thrilling experiences for the ultimate adventure seeker",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 4,
+      "name": "Urban Exploration",
+      "description": "Discover the hidden sides of cities around the world",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "user_id": 5,
+      "name": "Global Flavors",
+      "description": "International culinary journeys and food experiences",
+      "is_private": false,
+      "created_at": null,
+      "updated_at": null
+    }
+  ]

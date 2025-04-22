@@ -1,0 +1,42 @@
+[
+    {
+      "username": "tavi_kauwe",
+      "email": "tavi.kauwe@example.com",
+      "password_hash": "$2b$12$KJJgJCBzPMVN4xVEJ4PC3OXDXNVGIxrYGcCcL1S6NKV4vX2DY/Fhu",
+      "profile_picture": "tavi_profile.jpg",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "username": "myshkin_kauwe",
+      "email": "myshkin.kauwe@example.com",
+      "password_hash": "$2b$12$KJJgJCBzPMVN4xVEJ4PC3OXDXNVGIxrYGcCcL1S6NKV4vX2DY/Fhu",
+      "profile_picture": "myshkin_profile.jpg",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "username": "traveler42",
+      "email": "adventure.seeker@example.com",
+      "password_hash": "$2b$12$KJJgJCBzPMVN4xVEJ4PC3OXDXNVGIxrYGcCcL1S6NKV4vX2DY/Fhu",
+      "profile_picture": "traveler_profile.jpg",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "username": "urban_explorer",
+      "email": "city.wanderer@example.com",
+      "password_hash": "$2b$12$KJJgJCBzPMVN4xVEJ4PC3OXDXNVGIxrYGcCcL1S6NKV4vX2DY/Fhu",
+      "profile_picture": "explorer_profile.jpg",
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "username": "foodie_finds",
+      "email": "culinary.quests@example.com",
+      "password_hash": "$2b$12$KJJgJCBzPMVN4xVEJ4PC3OXDXNVGIxrYGcCcL1S6NKV4vX2DY/Fhu",
+      "profile_picture": "foodie_profile.jpg",
+      "created_at": null,
+      "updated_at": null
+    }
+  ]

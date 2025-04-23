@@ -3,10 +3,8 @@ import json
 import os
 import sys
 from datetime import datetime, timezone
-
 # Add the parent directory to the path so we can import app modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from app import create_app
 from app.extensions import db
 from app.models.fijalist import FijaList
@@ -22,7 +20,7 @@ def load_data(filename):
         return json.load(f)
 
 def seed_database():
-    """Seed the database with initial fijalists"""
+    """Seed the database with initial data"""
     app = create_app()
     with app.app_context():
         print("Clearing existing data...")
@@ -36,14 +34,26 @@ def seed_database():
         for user_data in users_data:
             user = User(**user_data)
             db.session.add(user)
+        
+        # Create tags first from tags.json
+        all_tags = {}
+        try:
+            print("Creating tags from tags.json...")
+            tags_data = load_data('tags.json')
+            for tag_data in tags_data:
+                tag = Tag(name=tag_data['name'])
+                db.session.add(tag)
+                all_tags[tag_data['name']] = tag
+            print(f"Created {len(tags_data)} tags from tags.json")
+        except FileNotFoundError:
+            print("No tags.json file found, skipping")
+            
+        # Load fijalists data
         print("Loading fijalists data...")
         fijalists_data = load_data('fijalists.json')
         
-        
-        
-        # Create tags first (collecting all unique tags)
-        all_tags = {}
-        print("Creating tags...")
+        # Process additional tags from fijalists
+        print("Processing tags from fijalists...")
         for fijalist_data in fijalists_data:
             if 'tags' in fijalist_data:
                 for tag_name in fijalist_data['tags']:
@@ -67,7 +77,6 @@ def seed_database():
                 # created_at and updated_at will use the default values from your model
             )
             db.session.add(fijalist)
-            
             # Need to flush to get the fijalist ID
             db.session.flush()
             
@@ -76,7 +85,7 @@ def seed_database():
                 if tag_name in all_tags:
                     fijalist.tags.append(all_tags[tag_name])
         
-             # Create collections
+        # Create collections
         print("Creating collections...")
         collections_data = load_data('collections.json')
         for collection_data in collections_data:

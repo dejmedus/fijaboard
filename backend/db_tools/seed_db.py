@@ -11,6 +11,8 @@ from app import create_app
 from app.extensions import db
 from app.models.fijalist import FijaList
 from app.models.tag import Tag
+from app.models.user import User
+from app.models.collection import Collection
 from app.models.fijalist_tag import FijaListTag
 
 def load_data(filename):
@@ -28,6 +30,12 @@ def seed_database():
         db.drop_all()
         db.create_all()
         
+        # Seed users first (if there are dependencies)
+        print("Creating users...")
+        users_data = load_data('users.json')
+        for user_data in users_data:
+            user = User(**user_data)
+            db.session.add(user)
         print("Loading fijalists data...")
         fijalists_data = load_data('fijalists.json')
         
@@ -68,8 +76,15 @@ def seed_database():
                 if tag_name in all_tags:
                     fijalist.tags.append(all_tags[tag_name])
         
+             # Create collections
+        print("Creating collections...")
+        collections_data = load_data('collections.json')
+        for collection_data in collections_data:
+            collection = Collection(**collection_data)
+            db.session.add(collection)
+        
         db.session.commit()
-        print(f"Database seeded successfully with {len(fijalists_data)} fijalists and {len(all_tags)} tags!")
+        print(f"Database seeded successfully with {len(fijalists_data)} fijalists, {len(users_data)} users, {len(collections_data)} collections and {len(all_tags)} tags!")
 
 if __name__ == "__main__":
     seed_database()

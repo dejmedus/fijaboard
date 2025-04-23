@@ -7,4 +7,5 @@ export default [
   route("signup", "routes/signup.tsx"),
   route("profile", "routes/profile.tsx"),
   route("catalog", "routes/catalog.tsx"),
+  route("fijalist/:id", "routes/fijalist.tsx"),
 ] satisfies RouteConfig;

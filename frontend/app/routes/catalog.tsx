@@ -8,6 +8,7 @@ import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { useRestoreScrollPosition } from "../hooks/useScrollPosition";
 import FilterBar from "../components/FilterBar";
+import CollectionTabs from "~/components/CollectionTabs";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
@@ -147,7 +148,7 @@ export default function Catalog() {
           setSelectedFilters={setSelectedFilters}
         />
 
-        {/* create new collection button */}
+        {/* create new collection button
         <button
           className="w-full mb-6 px-4 py-3 text-sm font-medium text-purple-600 bg-purple-50 rounded-lg hover:bg-purple-100 flex items-center justify-center"
           aria-label="Create new collection"
@@ -167,7 +168,11 @@ export default function Catalog() {
             />
           </svg>
           Create New Collection
-        </button>
+        </button> */}
+
+        {/* Collections Tabs */}
+        <CollectionTabs/>
+
 
         {/* show message when no items are available */}
         {!isLoading && items.length === 0 && (

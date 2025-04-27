@@ -22,6 +22,11 @@ interface Fijalist {
   description: string;
   content: string;
   cover_image?: string;
+  location?: {
+    latitude: number;
+    longitude: number;
+    name: string;
+  };
   tags?: Tag[];
   created_at: Date;
   updated_at: Date;

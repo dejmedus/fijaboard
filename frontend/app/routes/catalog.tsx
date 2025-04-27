@@ -8,6 +8,7 @@ import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { useRestoreScrollPosition } from "../hooks/useScrollPosition";
 import FilterBar from "../components/FilterBar";
+import MapView from "../components/MapView";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
@@ -199,14 +200,21 @@ export default function Catalog() {
           </div>
         )}
 
-        {/* main masonry grid */}
+        {/* main masonry grid or map view depending on view mode */}
         {items.length > 0 && (
-          <section aria-label="List grid">
-            <MasonryGrid 
-              items={items} 
-              lastItemRef={lastItemRef} 
-              onItemClick={handleFijalistClick}
-            />
+          <section aria-label={viewMode === "grid" ? "List grid" : "Map view"}>
+            {viewMode === "grid" ? (
+              <MasonryGrid 
+                items={items} 
+                lastItemRef={lastItemRef} 
+                onItemClick={handleFijalistClick}
+              />
+            ) : (
+              <MapView
+                items={items}
+                onItemClick={handleFijalistClick}
+              />
+            )}
           </section>
         )}
 

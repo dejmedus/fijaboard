@@ -3,3 +3,4 @@
 venv
 notes
 generate-mock-data.sh
+reset-database.sh

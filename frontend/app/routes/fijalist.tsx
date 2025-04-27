@@ -65,7 +65,8 @@ export default function FijalistDetail() {
   const { 
     displayedItems: relatedLists, 
     loading, 
-    lastItemRef 
+    lastItemRef,
+    hasMore
   } = useInfiniteScroll<Fijalist>({
     items: currentFijalist ? findRelatedLists() : [],
     pageSize: 6
@@ -216,7 +217,7 @@ export default function FijalistDetail() {
             
             <MasonryGrid 
               items={relatedLists} 
-              lastItemRef={lastItemRef} 
+              lastItemRef={hasMore ? lastItemRef : undefined} 
               onItemClick={handleRelatedListClick}
             />
             

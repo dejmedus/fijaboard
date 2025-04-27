@@ -8,7 +8,7 @@ import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { useRestoreScrollPosition } from "../hooks/useScrollPosition";
 import FilterBar from "../components/FilterBar";
-import MapView from "../components/MapView";
+import MapViewHandler from "../components/MapViewHandler";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
@@ -210,9 +210,8 @@ export default function Catalog() {
                 onItemClick={handleFijalistClick}
               />
             ) : (
-              <MapView
+              <MapViewHandler
                 items={items}
-                onItemClick={handleFijalistClick}
               />
             )}
           </section>

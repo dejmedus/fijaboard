@@ -25,7 +25,7 @@ export default function MasonryGrid({ items, lastItemRef, onItemClick }: Masonry
                 src={item.cover_image || 'https://via.placeholder.com/400x300?text=No+Image'}
                 alt={item.title}
                 className="w-full h-full object-cover"
-                style={{ height: `${getRandomHeight()}rem` }}
+                style={{ height: `${getRandomHeight(item.id)}rem` }}
               />
             </figure>
             <div className="p-4">

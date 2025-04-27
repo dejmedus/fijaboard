@@ -8,6 +8,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { saveScrollPosition } from "../hooks/useScrollPosition";
+import ReactMarkdown from 'react-markdown';
 
 export default function FijalistDetail() {
   const { id } = useParams<{ id: string }>();
@@ -50,8 +51,15 @@ export default function FijalistDetail() {
       String(item.id) !== String(currentFijalist.id) && 
       item.tags && 
       item.tags.some(tag => currentTags.includes(tag.id))
-    );
-  }, [currentFijalist, fijalists]);
+    ).sort((a, b) => {
+      // count matching tags for each fijalist
+      const aMatches = a.tags ? a.tags.filter(tag => currentTags.includes(tag.id)).length : 0;
+      const bMatches = b.tags ? b.tags.filter(tag => currentTags.includes(tag.id)).length : 0;
+      
+      // sort by number of matching tags (higher first)
+      return bMatches - aMatches;
+    });
+  }, [currentFijalist?.id, currentFijalist?.tags, fijalists]);
 
   // use our custom hook for infinite scrolling
   const { 
@@ -195,7 +203,7 @@ export default function FijalistDetail() {
               
               {/* main list */}
               <div className="prose max-w-none">
-                <div className="whitespace-pre-wrap">{currentFijalist.content}</div>
+                <ReactMarkdown>{currentFijalist.content}</ReactMarkdown>
               </div>
             </div>
           </div>

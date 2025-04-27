@@ -9,9 +9,17 @@ interface MapViewHandlerProps {
 export default function MapViewHandler({ items }: MapViewHandlerProps) {
   const navigate = useNavigate();
 
-  // to handle pin click by navigating directly to the fijalist detail page
-  const handleFijalistClick = (fijalist: Fijalist) => {
-    navigate(`/fijalist/${fijalist.id}`);
+  // handle pin click with option to open in new tab
+  const handleFijalistClick = (fijalist: Fijalist, openInNewTab = false) => {
+    const url = `/fijalist/${fijalist.id}`;
+    
+    if (openInNewTab) {
+      window.open(url, '_blank');
+    } else {
+      // save current view mode to localStorage before navigating
+      localStorage.setItem('catalogViewMode', 'map');
+      navigate(url);
+    }
   };
 
   return (

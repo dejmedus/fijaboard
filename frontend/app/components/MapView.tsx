@@ -7,7 +7,7 @@ import L from 'leaflet';
 
 interface MapViewProps {
   items: Fijalist[];
-  onItemClick: (fijalist: Fijalist) => void;
+  onItemClick: (fijalist: Fijalist, openInNewTab?: boolean) => void;
 }
 
 export default function MapView({ items, onItemClick }: MapViewProps) {
@@ -28,6 +28,12 @@ export default function MapView({ items, onItemClick }: MapViewProps) {
   const truncateText = (text: string, maxLength: number) => {
     if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  };
+  
+  const handleClick = (event: React.MouseEvent, fijalist: Fijalist) => {
+    // check if ctrl or cmd key is pressed to open in new tab
+    const openInNewTab = event.ctrlKey || event.metaKey;
+    onItemClick(fijalist, openInNewTab);
   };
   
   return (
@@ -59,7 +65,7 @@ export default function MapView({ items, onItemClick }: MapViewProps) {
                   )}
                   <button 
                     className="map-popup-button"
-                    onClick={() => onItemClick(item)}
+                    onClick={(e) => handleClick(e, item)}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -67,6 +73,9 @@ export default function MapView({ items, onItemClick }: MapViewProps) {
                     </svg>
                     View Full List
                   </button>
+                  <p className="text-xs text-gray-500 mt-1 text-center">
+                    {navigator.platform.indexOf('Mac') !== -1 ? '⌘' : 'Ctrl'}+Click to open in new tab
+                  </p>
                 </div>
               </div>
             </Popup>

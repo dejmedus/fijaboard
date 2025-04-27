@@ -68,6 +68,9 @@ export default function FijalistDetail() {
     saveScrollPosition("catalog");
   };
 
+  // check if we came from map view
+  const cameFromMap = localStorage.getItem('catalogViewMode') === 'map';
+
   // display appropriate loading/error states
   if (isLoading) {
     return <div className="min-h-screen flex items-center justify-center">Loading data...</div>;
@@ -112,26 +115,52 @@ export default function FijalistDetail() {
     <main className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* back button */}
-        <Link 
-          to="/catalog" 
-          className="inline-flex items-center mb-6 text-purple-600 hover:text-purple-800"
-          onClick={handleBackClick}
-        >
-          <svg 
-            className="w-5 h-5 mr-2" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
+        <div className="flex items-center mb-6 gap-4">
+          <Link 
+            to="/catalog" 
+            className="inline-flex items-center text-purple-600 hover:text-purple-800"
+            onClick={handleBackClick}
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth="2" 
-              d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-            />
-          </svg>
-          Back to Catalog
-        </Link>
+            <svg 
+              className="w-5 h-5 mr-2" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+              />
+            </svg>
+            Back to Catalog
+          </Link>
+          
+          {/* adding CONDITIONAL "View on Map" button (depending on how the user got there) */}
+          {cameFromMap && (
+            <Link 
+              to="/catalog" 
+              className="inline-flex items-center text-blue-600 hover:text-blue-800"
+              onClick={handleBackClick}
+            >
+              <svg 
+                className="w-5 h-5 mr-2" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" 
+                />
+              </svg>
+              View on Map
+            </Link>
+          )}
+        </div>
 
         {/* main fijalist content */}
         <section className="mb-12">

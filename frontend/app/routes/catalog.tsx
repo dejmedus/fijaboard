@@ -12,10 +12,18 @@ import MapViewHandler from "../components/MapViewHandler";
 
 export default function Catalog() {
   const { fijalists, isLoading } = useData();
-  const [viewMode, setViewMode] = useState("grid"); // grid or map view
+  const [viewMode, setViewMode] = useState(() => {
+    const savedViewMode = localStorage.getItem('catalogViewMode');
+    return savedViewMode === 'map' ? 'map' : 'grid';
+  });
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   
-  // restore scroll position when returning to catalog -- is this something we want to implement???
+  // savie view mode to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('catalogViewMode', viewMode);
+  }, [viewMode]);
+  
+  // restore scroll position when returning to catalog
   useRestoreScrollPosition("catalog");
   
   // modal state

@@ -14,6 +14,7 @@ def get_fijalists():
         "description": fijalist.description,
         "cover_image": fijalist.cover_image,
         "content": fijalist.content,
+        "location": fijalist.location,
         "created_at": fijalist.created_at.isoformat(),
         "updated_at":fijalist.updated_at.isoformat(),
         "tags": [
@@ -35,6 +36,7 @@ def get_fijalist(id):
         "description": fijalist.description,
         "cover_image": fijalist.cover_image,
         "content": fijalist.content,
+        "location": fijalist.location,
         "created_at": fijalist.created_at.isoformat(),
         "updated_at":fijalist.updated_at.isoformat(),
         "tags": [
@@ -55,6 +57,7 @@ def create_fijalist():
         description=data.get('description'),
         cover_image=data.get('cover_image'),
         content=data.get('content'),
+        location=data.get('location'),
     )
 
     db.session.add(fijalist)
@@ -65,7 +68,8 @@ def create_fijalist():
         "title": fijalist.title,
         "description": fijalist.description,
         "cover_image": fijalist.cover_image,
-        "content": fijalist.content
+        "content": fijalist.content,
+        "location": fijalist.location
     }), 201
 
 @main.route('/fijalists/<int:fijalist_id>/tags/<int:tag_id>', methods=['POST'])
@@ -87,6 +91,7 @@ def update_fijalist(id):
     fijalist.description = data.get('description', fijalist.description)
     fijalist.cover_image = data.get('cover_image', fijalist.cover_image)
     fijalist.content = data.get('content', fijalist.content)
+    fijalist.location = data.get('location', fijalist.location)
 
     db.session.commit()
     return jsonify({
@@ -94,7 +99,8 @@ def update_fijalist(id):
         "title": fijalist.title,
         "description": fijalist.description,
         "cover_image": fijalist.cover_image,
-        "content": fijalist.content
+        "content": fijalist.content,
+        "location": fijalist.location
     }), 200
 
 

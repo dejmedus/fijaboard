@@ -8,7 +8,7 @@ from app.main import main
 
 @main.route('/users', methods=['GET'])
 def get_users():
-    users = User.query.all
+    users = User.query.all()
 
     return jsonify([{
         "id": user.id,

@@ -171,7 +171,11 @@ export default function Catalog() {
         </button> */}
 
         {/* Collections Tabs */}
-        <CollectionTabs/>
+        <CollectionTabs 
+          items={items} 
+          onItemClick={handleFijalistClick}
+        />
+
 
 
         {/* show message when no items are available */}

@@ -173,6 +173,7 @@ export default function Catalog() {
         {/* Collections Tabs */}
         <CollectionTabs 
           items={items} 
+          lastItemRef={lastItemRef} 
           onItemClick={handleFijalistClick}
         />
 
@@ -208,7 +209,7 @@ export default function Catalog() {
           </div>
         )}
 
-        {/* main masonry grid */}
+        {/* main masonry grid
         {items.length > 0 && (
           <section aria-label="List grid">
             <MasonryGrid 
@@ -217,7 +218,7 @@ export default function Catalog() {
               onItemClick={handleFijalistClick}
             />
           </section>
-        )}
+        )} */}
 
         {/* loading state */}
         {loading && <LoadingSpinner />}

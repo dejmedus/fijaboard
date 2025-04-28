@@ -1,0 +1,168 @@
+[
+    {
+        "title": "Ernest Hemingway's Favorite Haunts in Florida",
+        "description": "Explore Key West through the footsteps of the famous author who lived, wrote, and drank here from 1931-1939...",
+        "cover_image": "hemingway_key_west.jpg",
+        "content": [
+          "Ernest Hemingway Home and Museum - Visit his Spanish Colonial house where he lived from 1931-1939...",
+          "Sloppy Joe's Bar - Hemingway's favorite drinking spot in Key West...",
+          "Captain Tony's Saloon - The original location of Sloppy Joe's where Hemingway first drank...",
+          "Blue Heaven Restaurant - Originally a boxing ring where Hemingway refereed matches...",
+          "Key West Lighthouse - Hemingway could see this lighthouse from his home...",
+          "Dry Tortugas National Park - Hemingway frequently sailed here on his boat 'Pilar'...",
+          "Bagatelle Restaurant - Originally the Bahama House, this mansion was built in 1840...",
+          "Key West First Legal Rum Distillery - While not directly connected to Hemingway..."
+        ],
+        "tags": ["literature", "florida", "key-west", "hemingway", "food-drink", "pubs"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Best Coffee Shops in Portland",
+        "description": "A curated selection of Portland's finest coffee establishments...",
+        "cover_image": "portland_coffee.jpg",
+        "content": [
+          "Stumptown Coffee Roasters - The iconic Portland coffee brand known for...",
+          "Heart Coffee Roasters - Scandinavian-inspired coffee shop offering...",
+          "Coava Coffee Roasters - Industrial-chic cafe with single-origin..."
+        ],
+        "tags": ["coffee", "portland", "cafes"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Scenic Views with Bob Ross in the Pacific Northwest",
+        "description": "Experience the joy of painting in real life by visiting these breathtaking Pacific Northwest locations that could have inspired Bob Ross's iconic landscape paintings.",
+        "cover_image": "bob_ross_landscapes.jpg",
+        "content": [
+          "Mount Rainier National Park, Washington - This majestic mountain with its snow-capped peak evokes Bob Ross's painting 'Mountain Retreat'. The view from Reflection Lakes provides a perfect mirror image of the mountain just like Ross often painted.",
+          "Multnomah Falls, Oregon - This 620-foot-tall waterfall in the Columbia River Gorge bears striking resemblance to Ross's 'Hidden Waterfall' painting. The two-tiered falls surrounded by lush greenery create a perfect Bob Ross-esque scene.",
+          "Lake Crescent, Olympic National Park - The crystal-clear waters and surrounding evergreen forests mirror the tranquil lake scenes in Ross's 'Peaceful Waters' painting. The morning mist that often settles on the lake creates the ethereal quality Ross loved.",
+          "Cedar Creek Grist Mill, Washington - This historic wooden mill built in 1876 sits over a rushing creek, similar to Ross's 'Old Mill' paintings. The red wooden structure against green forest would have delighted Bob.",
+          "Tumalo Falls Trail, Oregon - The burbling Tumalo Creek that runs alongside this trail resembles the 'Bubbling Stream' painting. The 97-foot waterfall at the end provides a perfect Ross-style focal point.",
+          "Mount Hood from Trillium Lake, Oregon - This stunning view with the mountain reflected in the still lake is reminiscent of Ross's 'Reflections of Calm'. The composition with trees framing the mountain is classic Bob Ross."
+        ],
+        "tags":["nature", "art", "pacific-northwest"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Animal Lover's Adventure in San Diego",
+        "description": "Discover the perfect itinerary for animal enthusiasts in San Diego, from ethical wildlife encounters to pet-friendly cafes and plant-based dining experiences.",
+        "cover_image": "san_diego_animals.jpg",
+        "content": [
+          "San Diego Zoo - One of the world's most famous zoos with over 12,000 rare and endangered animals representing more than 650 species. Don't miss the giant pandas, koalas, and the Elephant Odyssey habitat.",
+          "Cat Café Lounge San Diego - Spend time with adoptable rescue cats while enjoying coffee and pastries. All cats are available for adoption, and your visit helps support their care.",
+          "La Jolla Cove - Watch sea lions and harbor seals in their natural habitat as they lounge on the rocks and swim in the protected cove. The area is also home to colorful garibaldi fish and pelicans.",
+          "Kindred - Award-winning vegan restaurant in South Park offering creative plant-based dishes and cocktails in a stylish gothic-inspired space. Their Buffalo cauliflower 'wings' and seitan skewers are local favorites.",
+          "Safari Park - Sister property to the San Diego Zoo where animals roam in large enclosures that mimic their native habitats. The African Tram Safari and Cheetah Run are must-see experiences.",
+          "Dog Beach - A leash-free beach in Ocean Beach where dogs can run, play and swim. Perfect for dog owners or just animal lovers who enjoy watching happy pups frolic in the surf.",
+          "Plant Power Fast Food - A 100% plant-based fast food restaurant serving vegan versions of classic favorites like burgers, 'chicken' sandwiches, and milkshakes, showing how animal-friendly dining can still be indulgent."
+        ],
+        "created_at": null,
+        "updated_at": null,
+        "tags": ["animals", "san-diego", "travel", "food-drink"]
+      },
+      {
+        "title": "Literary Landmarks in Dublin",
+        "description": "Follow in the footsteps of Ireland's literary giants through Dublin, a UNESCO City of Literature that has inspired countless writers and poets through the centuries.",
+        "cover_image": "dublin_literary.jpg",
+        "content": [
+          "Dublin Writers Museum - Housed in an 18th-century mansion, this museum celebrates the works of Swift, Wilde, Yeats, Joyce, and other Irish literary legends with manuscripts, letters, and personal items.",
+          "Trinity College and the Book of Kells - Visit the alma mater of Samuel Beckett, Oscar Wilde, and Bram Stoker, and see the stunning Long Room Library that houses the famous illuminated manuscript.",
+          "Davy Byrne's Pub - The famous pub featured in James Joyce's 'Ulysses' where Leopold Bloom enjoyed a gorgonzola sandwich and glass of burgundy. Still operating today and a must-visit on Bloomsday (June 16).",
+          "Oscar Wilde House - The childhood home of the famous playwright and wit, now part of the American College Dublin. The nearby statue of Wilde lounging on a rock in Merrion Square is also worth visiting.",
+          "Sweny's Pharmacy - A preserved Victorian-era pharmacy where Leopold Bloom bought lemon soap in 'Ulysses'. Now run by volunteers who host daily readings from Joyce's works.",
+          "The National Library of Ireland - Houses the world's largest collection of W.B. Yeats manuscripts, along with extensive Joyce archives and an excellent exhibition on Irish literary history.",
+          "The Abbey Theatre - Founded by W.B. Yeats and Lady Gregory in 1904, this is Ireland's national theater and played a crucial role in promoting Irish literary talent."
+        ],
+        "tags": ["literature", "travel", "ireland","food-drink", "pubs"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Hidden Architectural Gems in Chicago",
+        "description": "Discover Chicago's lesser-known architectural masterpieces beyond the famous skyscrapers, showcasing the city's rich design heritage across different neighborhoods and eras.",
+        "cover_image": "chicago_architecture.jpg",
+        "content": [
+          "Bahá'í House of Worship - The only Bahá'í temple in North America, this stunning domed structure in Wilmette features intricate lace-like concrete patterns and beautiful gardens.",
+          "Rookery Building Light Court - Step inside this 1888 masterpiece to see Frank Lloyd Wright's luminous lobby renovation with white marble and gold leaf details hidden within a historic exterior.",
+          "Reebie Storage Warehouse - An unlikely Egyptian Revival treasure covered in hieroglyphics, pharaohs, and palm fronds, making it perhaps the world's most elaborate storage facility.",
+          "Alfred Caldwell Lily Pool - A prairie-style landscape masterpiece tucked away in Lincoln Park, featuring natural stonework, native plantings, and a pavilion designed by Caldwell.",
+          "Elks National Memorial - A neoclassical circular temple with breathtaking mosaics, bronze sculptures, and a 38-foot domed ceiling rarely visited by tourists.",
+          "S.R. Crown Hall - Ludwig Mies van der Rohe's minimalist masterpiece on the IIT campus embodies his 'less is more' philosophy with its clear span glass and steel construction.",
+          "Chicago Cultural Center - Free to enter and home to the world's largest Tiffany glass dome, intricately designed mosaics, and marble staircases housed in what was once the city's first public library."
+        ],
+        "tags": ["architecture", "chicago", "design", "history"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Street Art Safari in Melbourne",
+        "description": "Explore Melbourne's world-renowned urban art scene through its vibrant laneways, hidden alleys, and neighborhood walls that showcase everything from political statements to breathtaking murals.",
+        "cover_image": "melbourne_street_art.jpg",
+        "content": [
+          "Hosier Lane - The most famous street art location in Melbourne, this bluestone laneway features constantly changing murals, stencils, and paste-ups from international and local artists.",
+          "AC/DC Lane - Named after the famous Australian rock band, this laneway in the heart of Melbourne features music-themed art and leads to Cherry Bar, a legendary rock venue.",
+          "Blender Studios - An artist-run studio space that offers guided street art tours led by working artists who can provide insider knowledge about Melbourne's urban art culture.",
+          "Centre Place - A narrow laneway filled with cafes, small bars, and boutiques where street art covers every available surface, creating one of Melbourne's most photographed locations.",
+          "Brunswick Street, Fitzroy - This bohemian neighborhood is home to large-scale murals by renowned artists like Rone and Adnate, often depicting haunting, photorealistic portraits.",
+          "Duckboard Place - Connected to AC/DC Lane, this area features works by international street artists and is home to a famous Banksy rat stencil (though it's been damaged over time).",
+          "Collingwood Arts Precinct - This former technical school has been transformed into a creative hub with building-sized murals and installations throughout the surrounding streets."
+        ],
+        "tags": ["art", "street-art", "melbourne", "urban-culture"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Historical Pub Crawl in Boston",
+        "description": "Drink in the history of America's revolution while sampling craft beers and classic cocktails at Boston's oldest and most storied taverns, where founding fathers once plotted independence.",
+        "cover_image": "boston_historic_pubs.jpg",
+        "content": [
+          "Green Dragon Tavern - Established in 1654 and known as the 'Headquarters of the Revolution', this is where Paul Revere and John Hancock plotted the Boston Tea Party. The current location is a faithful recreation of the original.",
+          "Bell in Hand Tavern - America's oldest continuously operating tavern (established 1795), founded by Boston's last town crier. Try their signature ale while soaking in the historic atmosphere.",
+          "Warren Tavern - Built in 1780, this Charlestown pub was one of the first buildings constructed after the British burned the town. George Washington, Paul Revere, and Benjamin Franklin all drank here.",
+          "Union Oyster House - America's oldest continuously operating restaurant (since 1826) features a wooden bar that's been serving drinks for nearly two centuries. The 'Kennedy Booth' commemorates JFK's regular visits.",
+          "The Point - Located in the historic Bulfinch Triangle, this pub occupies a building from the 1840s that survived Boston's Great Fire of 1872 and has original exposed brick walls and wooden beams.",
+          "Doyle's Cafe - A Jamaica Plain institution since 1882 that served as a political hub for Boston mayors and Kennedy family gatherings. Famous for being the first bar to pour Sam Adams beer.",
+          "Amrheins - South Boston's oldest tavern (established 1890) features the oldest hand-carved bar in America and the first draft beer system in Boston."
+        ],
+        "tags": ["history", "boston", "food-drink", "pubs"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Southeast Asian Foodie's Paradise in Queens, NY",
+        "description": "Embark on a culinary journey through the diverse flavors of Southeast Asia without leaving Queens, home to authentic restaurants representing Thailand, Vietnam, the Philippines, and more.",
+        "cover_image": "queens_sea_food.jpg",
+        "content": [
+          "SriPraPhai - This Woodside institution is widely considered one of NYC's best Thai restaurants, known for not toning down spice levels and serving regional specialties like crispy watercress salad and jungle curry.",
+          "Phayul - Experience Tibetan cuisine in Jackson Heights with standout dishes like beef momos (dumplings), thenthuk (hand-pulled noodle soup), and shabhaley (fried beef patties).",
+          "Ihawan - This Filipino favorite in Woodside serves exceptional lechon (roast pork) and kare-kare (oxtail stew in peanut sauce) in a no-frills setting that locals adore.",
+          "Pata Cafe - A hidden gem in Elmhurst offering authentic Northern Thai dishes like khao soi (curry noodle soup) and nam prik ong (chili dip) that are rare finds outside Thailand.",
+          "JoJu - Modern Vietnamese in Elmhurst famous for their banh mi sandwiches with creative fillings like bulgogi beef and lemongrass pork, plus Vietnamese iced coffee and bubble tea.",
+          "Lao Bei Fang - Hand-pulled noodles made before your eyes at this Elmhurst spot specializing in northwestern Chinese cuisine, with incredible knife-shaved noodles and affordable dumplings.",
+          "Dosa Delight - South Indian vegetarian haven in Jackson Heights serving crispy dosas, uttapam, and thali platters that showcase the regional flavors of southern India."
+        ],
+        "tags": ["food", "queens", "asian-cuisine", "restaurants"],
+        "created_at": null,
+        "updated_at": null
+      },
+      {
+        "title": "Film Location Tour in Vancouver",
+        "description": "Explore 'Hollywood North' through iconic filming locations that have doubled for everything from superhero cities to alien worlds in countless blockbusters and TV series.",
+        "cover_image": "vancouver_film.jpg",
+        "content": [
+          "Vancouver Public Library - The distinctive postmodern central branch has appeared in Battlestar Galactica, The Imaginarium of Doctor Parnassus, and as a high-tech headquarters in multiple sci-fi productions.",
+          "Stanley Park - This sprawling urban park has been featured in Deadpool, Planet of the Apes, The X-Files, and countless other productions, with its seawall and forest areas providing versatile backdrops.",
+          "Gastown Steam Clock - A popular filming spot on Vancouver's cobblestone streets, appearing in Deadpool, Lucifer, and The Flash. The surrounding historic district frequently stands in for New York City.",
+          "Marine Building - This stunning Art Deco building from 1930 has served as the Daily Planet in Smallville, appeared in Blade: Trinity, and featured in Fifty Shades of Grey as Christian Grey's office building.",
+          "University of British Columbia - The campus has portrayed everything from Xavier's School for Gifted Youngsters in X-Men to the setting for The Age of Adaline, with its Museum of Anthropology being particularly photogenic.",
+          "Cleveland Dam - This North Vancouver location created the dramatic waterfall fight scene in Rambo: First Blood and has appeared in MacGyver, The X-Files, and Supernatural.",
+          "Britannia Mine Museum - This former copper mine has been transformed into everything from secret military facilities to villain lairs in productions like The X-Files, Siren, and Fantastic Four."
+        ],
+        "tags": ["film", "vancouver", "travel", "entertainment"],
+        "created_at": null,
+        "updated_at": null
+      }
+]

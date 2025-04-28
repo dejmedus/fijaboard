@@ -20,10 +20,9 @@ exit()
 
 #### Flask tests:
 ``` python
-python -m unittest tests.route_tests.<test_file_name>
-
-# example:
-python -m unittest tests.route_tests.test_collections
+python3 -m unittest tests.route_tests.<test_file_name>
+# or
+python3 -m unittest discover -s tests
 ```
 
 #### Frontend

@@ -9,6 +9,11 @@ interface DataContextType {
   collections: Collection[];
   collectionNames: string[];
   addCollection: (collection: Collection) => Promise<boolean>;
+  updateCollection: (
+    collectionId: string,
+    updatedCollection: Collection
+  ) => Promise<boolean>;
+  deleteCollection: (collectionId: string) => Promise<boolean>;
   addFijalistToCollection: (
     collectionId: string,
     fijalist: Fijalist
@@ -26,6 +31,8 @@ const defaultContext: DataContextType = {
   collections: [],
   collectionNames: [],
   addCollection: () => Promise.resolve(false),
+  updateCollection: () => Promise.resolve(false),
+  deleteCollection: () => Promise.resolve(false),
   addFijalistToCollection: () => Promise.resolve(false),
   removeFijalistFromCollection: () => Promise.resolve(false),
 };
@@ -107,6 +114,89 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       return true;
     } catch (err: any) {
       setError(err.message || "Could not add collection");
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const deleteCollection = async (collectionId: string) => {
+    setIsLoading(true);
+
+    if (!collectionId) {
+      setError("Collection ID is required");
+      setIsLoading(false);
+      return false;
+    }
+
+    try {
+      const response = await fetch(
+        `${BACKEND_URL}/collections/${collectionId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Could not delete collection");
+      }
+
+      setCollections((prev) =>
+        prev.filter((collection) => String(collection.id) !== collectionId)
+      );
+
+      return true;
+    } catch (err: any) {
+      setError(err.message || "Could not delete collection");
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateCollection = async (
+    collectionId: string,
+    updatedCollection: Collection
+  ) => {
+    setIsLoading(true);
+
+    if (!collectionId || !updatedCollection) {
+      setError("Collection is required");
+      setIsLoading(false);
+      return false;
+    }
+
+    try {
+      const response = await fetch(
+        `${BACKEND_URL}/collections/${collectionId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(updatedCollection),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Could not update collection");
+      }
+
+      setCollections((prev) =>
+        prev.map((collection) => {
+          if (String(collection.id) === collectionId) {
+            return { ...collection, ...updatedCollection };
+          }
+          return collection;
+        })
+      );
+
+      return true;
+    } catch (err: any) {
+      setError(err.message || "Could not update collection");
       return false;
     } finally {
       setIsLoading(false);
@@ -240,6 +330,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         collections,
         collectionNames,
         addCollection,
+        updateCollection,
+        deleteCollection,
         addFijalistToCollection,
         removeFijalistFromCollection,
       }}

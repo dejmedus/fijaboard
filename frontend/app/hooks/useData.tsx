@@ -109,7 +109,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         throw new Error(errorData.message || "Could not add collection");
       }
 
-      setCollections((prev) => [...prev, collection]);
+      const newCollection = await response.json();
+      setCollections((prev) => [...prev, newCollection]);
 
       return true;
     } catch (err: any) {

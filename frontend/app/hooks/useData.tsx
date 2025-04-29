@@ -9,6 +9,14 @@ interface DataContextType {
   collections: Collection[];
   collectionNames: string[];
   addCollection: (collection: Collection) => Promise<boolean>;
+  addFijalistToCollection: (
+    collectionId: string,
+    fijalist: Fijalist
+  ) => Promise<boolean>;
+  removeFijalistFromCollection: (
+    collectionId: string,
+    fijalistId: string
+  ) => Promise<boolean>;
 }
 
 const defaultContext: DataContextType = {
@@ -18,6 +26,8 @@ const defaultContext: DataContextType = {
   collections: [],
   collectionNames: [],
   addCollection: () => Promise.resolve(false),
+  addFijalistToCollection: () => Promise.resolve(false),
+  removeFijalistFromCollection: () => Promise.resolve(false),
 };
 
 const DataContext = createContext<DataContextType>(defaultContext);
@@ -103,6 +113,124 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const addFijalistToCollection = async (
+    collectionId: string,
+    fijalist: Fijalist
+  ) => {
+    setIsLoading(true);
+
+    if (!collectionId || !fijalist) {
+      setError("Collection ID and Fijalist are required");
+      setIsLoading(false);
+      return false;
+    }
+
+    const collection = collections.find(
+      (collection) => String(collection.id) === collectionId
+    );
+
+    if (collection && collection.fijalists) {
+      const isFijalistInCollection = collection.fijalists.some(
+        (fijalistInCollection) =>
+          String(fijalistInCollection.id) === String(fijalist.id)
+      );
+      if (isFijalistInCollection) {
+        setError("Fijalist is already in the collection");
+        setIsLoading(false);
+        return false;
+      }
+    }
+
+    try {
+      const response = await fetch(
+        `${BACKEND_URL}/collections/${collectionId}/fijalists/${fijalist.id}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.message || "Could not add fijalist to collection"
+        );
+      }
+
+      setCollections((prev) =>
+        prev.map((collection) => {
+          if (String(collection.id) === collectionId) {
+            return {
+              ...collection,
+              fijalists: [...(collection.fijalists || []), fijalist],
+            };
+          }
+          return collection;
+        })
+      );
+
+      return true;
+    } catch (err: any) {
+      setError(err.message || "Could not add fijalist to collection");
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const removeFijalistFromCollection = async (
+    collectionId: string,
+    fijalistId: string
+  ) => {
+    setIsLoading(true);
+
+    if (!collectionId || !fijalistId) {
+      setError("Collection ID and Fijalist ID are required");
+      setIsLoading(false);
+      return false;
+    }
+
+    try {
+      const response = await fetch(
+        `${BACKEND_URL}/collections/${collectionId}/fijalists/${fijalistId}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.message || "Could not remove fijalist from collection"
+        );
+      }
+
+      setCollections((prev) =>
+        prev.map((collection) => {
+          if (String(collection.id) === collectionId) {
+            return {
+              ...collection,
+              fijalists: collection.fijalists?.filter(
+                (fijalist) => String(fijalist.id) !== fijalistId
+              ),
+            };
+          }
+          return collection;
+        })
+      );
+
+      return true;
+    } catch (err: any) {
+      setError(err.message || "Could not add fijalist from collection");
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -112,6 +240,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
         collections,
         collectionNames,
         addCollection,
+        addFijalistToCollection,
+        removeFijalistFromCollection,
       }}
     >
       {children}

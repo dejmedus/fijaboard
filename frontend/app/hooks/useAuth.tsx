@@ -7,7 +7,7 @@ interface AuthContextType {
   error: string | null;
   login: (email: string, password: string) => Promise<boolean>;
   signup: (userData: any) => Promise<boolean>;
-  logout: () => void;
+  logout: () => Promise<boolean>;
 }
 
 const defaultContext: AuthContextType = {
@@ -16,7 +16,7 @@ const defaultContext: AuthContextType = {
   error: null,
   login: async () => false,
   signup: async () => false,
-  logout: () => {},
+  logout: async () => false,
 };
 
 const AuthContext = createContext<AuthContextType>(defaultContext);

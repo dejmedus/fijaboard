@@ -101,6 +101,7 @@ def remove_fijalist_from_collection(collection_id, fijalist_id):
 
 
 @main.route('/collections', methods=['POST'])
+@login_required
 def create_collection():
     data = request.get_json()
 
@@ -108,6 +109,7 @@ def create_collection():
         name=data.get('name'),
         description=data.get('description'),
         is_private=data.get('is_private'),
+        user_id=current_user.id
     )
 
     db.session.add(collection)

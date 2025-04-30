@@ -2,9 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link, useParams } from "react-router";
 import useData from "../hooks/useData";
 import type { Fijalist } from "~/lib/types";
-import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import MasonryGrid from "../components/MasonryGrid";
-import LoadingSpinner from "../components/LoadingSpinner";
 import Modal from "../components/Modal";
 import FijalistPreview from "../components/FijalistPreview";
 import { saveScrollPosition } from "../hooks/useScrollPosition";
@@ -53,15 +51,8 @@ export default function FijalistDetail() {
     );
   }, [currentFijalist, fijalists]);
 
-  // use our custom hook for infinite scrolling
-  const { 
-    displayedItems: relatedLists, 
-    loading, 
-    lastItemRef 
-  } = useInfiniteScroll<Fijalist>({
-    items: currentFijalist ? findRelatedLists() : [],
-    pageSize: 6
-  });
+  // get all related lists at once - adding to fix infinite rendering issue
+  const relatedLists = currentFijalist ? findRelatedLists() : [];
 
   // handle click on the back button to save scroll position
   const handleBackClick = () => {
@@ -179,11 +170,8 @@ export default function FijalistDetail() {
             
             <MasonryGrid 
               items={relatedLists} 
-              lastItemRef={lastItemRef} 
               onItemClick={handleRelatedListClick}
             />
-            
-            {loading && <LoadingSpinner />}
           </section>
         )}
       </div>

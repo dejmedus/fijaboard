@@ -49,7 +49,7 @@
       {
         "title": "Animal Lover's Adventure in San Diego",
         "description": "Discover the perfect itinerary for animal enthusiasts in San Diego, from ethical wildlife encounters to pet-friendly cafes and plant-based dining experiences.",
-        "cover_image": "placeholder",
+        "cover_image": "https://res.cloudinary.com/jerrick/image/upload/v1736683724/6783b0ccb4c81c001d8bf1d7.jpg",
         "content": [
           "San Diego Zoo - One of the world's most famous zoos with over 12,000 rare and endangered animals representing more than 650 species. Don't miss the giant pandas, koalas, and the Elephant Odyssey habitat.",
           "Cat Café Lounge San Diego - Spend time with adoptable rescue cats while enjoying coffee and pastries. All cats are available for adoption, and your visit helps support their care.",
@@ -66,7 +66,7 @@
       {
         "title": "Literary Landmarks in Dublin",
         "description": "Follow in the footsteps of Ireland's literary giants through Dublin, a UNESCO City of Literature that has inspired countless writers and poets through the centuries.",
-        "cover_image": "placeholder",
+        "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnVbgKdoAktjUyE6RUKcUQ38Pe06eVuunVHg&s",
         "content": [
           "Dublin Writers Museum - Housed in an 18th-century mansion, this museum celebrates the works of Swift, Wilde, Yeats, Joyce, and other Irish literary legends with manuscripts, letters, and personal items.",
           "Trinity College and the Book of Kells - Visit the alma mater of Samuel Beckett, Oscar Wilde, and Bram Stoker, and see the stunning Long Room Library that houses the famous illuminated manuscript.",
@@ -83,7 +83,7 @@
       {
         "title": "Hidden Architectural Gems in Chicago",
         "description": "Discover Chicago's lesser-known architectural masterpieces beyond the famous skyscrapers, showcasing the city's rich design heritage across different neighborhoods and eras.",
-        "cover_image": "placeholder",
+        "cover_image": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/12/6d/a4/d2.jpg",
         "content": [
           "Bahá'í House of Worship - The only Bahá'í temple in North America, this stunning domed structure in Wilmette features intricate lace-like concrete patterns and beautiful gardens.",
           "Rookery Building Light Court - Step inside this 1888 masterpiece to see Frank Lloyd Wright's luminous lobby renovation with white marble and gold leaf details hidden within a historic exterior.",
@@ -100,7 +100,7 @@
       {
         "title": "Street Art Safari in Melbourne",
         "description": "Explore Melbourne's world-renowned urban art scene through its vibrant laneways, hidden alleys, and neighborhood walls that showcase everything from political statements to breathtaking murals.",
-        "cover_image": "placeholder",
+        "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-WRry9frFZRFWOV8583mtu3txPtZ0-Kb7Ag&s",
         "content": [
           "Hosier Lane - The most famous street art location in Melbourne, this bluestone laneway features constantly changing murals, stencils, and paste-ups from international and local artists.",
           "AC/DC Lane - Named after the famous Australian rock band, this laneway in the heart of Melbourne features music-themed art and leads to Cherry Bar, a legendary rock venue.",
@@ -117,7 +117,7 @@
       {
         "title": "Historical Pub Crawl in Boston",
         "description": "Drink in the history of America's revolution while sampling craft beers and classic cocktails at Boston's oldest and most storied taverns, where founding fathers once plotted independence.",
-        "cover_image": "placeholder",
+        "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmaqCgn4T1xOpFuU15XuxNTR0cTmH-u2iR5g&s",
         "content": [
           "Green Dragon Tavern - Established in 1654 and known as the 'Headquarters of the Revolution', this is where Paul Revere and John Hancock plotted the Boston Tea Party. The current location is a faithful recreation of the original.",
           "Bell in Hand Tavern - America's oldest continuously operating tavern (established 1795), founded by Boston's last town crier. Try their signature ale while soaking in the historic atmosphere.",
@@ -186,7 +186,7 @@
         {
           "title": "Tokyo's Hidden Gardens and Green Spaces",
           "description": "Discover tranquil oases amid the bustling metropolis of Tokyo, where centuries-old Japanese garden design and modern urban green spaces provide peaceful retreats from city life.",
-          "cover_image": "placeholder",
+          "cover_image": "https://i0.wp.com/tokyotreatblog.wpcomstaging.com/wp-content/uploads/2023/07/hidden-parks-in-tokyo-thumbnail.png?fit=1024%2C683&ssl=1",
           "content": [
             "Koishikawa Korakuen - One of Tokyo's oldest gardens dating from 1629, this Edo-period strolling garden recreates famous landscapes of China and Japan in miniature with a central pond, stone bridges, and carefully placed stone lanterns.",
             "Rikugien Garden - Created in 1702 for a feudal lord, this garden reproduces in miniature 88 scenes from famous poems. The meticulously maintained paths wind around a large central pond with islands connected by bridges.",
@@ -203,7 +203,7 @@
         {
           "title": "Art Deco Architecture Tour of Miami Beach",
           "description": "Explore the world's largest concentration of Art Deco buildings in Miami Beach's historic district, featuring the distinctive pastel-colored, geometric designs that defined this glamorous 1920s-1940s architectural movement.",
-          "cover_image": "placeholder",
+          "cover_image": "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6e/cf/4d.jpg",
           "content": [
             "Colony Hotel - This 1935 hotel's distinctive blue neon sign and façade make it one of Ocean Drive's most photographed buildings. Designed by Henry Hohauser, it exemplifies the 'tropical deco' style with porthole windows and eyebrow overhangs.",
             "The Carlyle - This iconic 1941 building designed by Kiehnel and Elliott has been immortalized in numerous films including 'Scarface' and 'The Birdcage.' Its symmetrical façade features three prominent vertical towers and stepped rooflines.",
@@ -238,7 +238,7 @@
         {
           "title": "Geological Wonders of Utah's National Parks",
           "description": "Journey through the stunning red rock landscapes of Utah's 'Mighty Five' national parks, where millions of years of geological processes have created some of Earth's most spectacular natural formations.",
-          "cover_image": "placeholder",
+          "cover_image": "https://d19lgisewk9l6l.cloudfront.net/assetbank/North_Window_Arches_National_Park_in_Utah_306122.jpg",
           "content": [
             "Delicate Arch, Arches National Park - This freestanding 52-foot arch has become Utah's unofficial symbol. Formed through a combination of freeze-thaw cycles and erosion that removed surrounding sandstone, leaving this remarkable remnant of a fin from the Entrada Sandstone formation.",
             "Landscape Arch, Arches National Park - With a span of 306 feet, this is one of the longest natural stone arches in the world. Its precarious, thin ribbon of sandstone demonstrates the ongoing erosional processes that will eventually cause its collapse.",
@@ -255,7 +255,7 @@
         {
           "title": "Artisanal Chocolate Tour of Paris",
           "description": "Indulge in the exquisite world of French chocolate craftsmanship through this curated journey of Paris's finest chocolatiers, where traditional techniques meet innovative flavors in the hands of master artisans.",
-          "cover_image": "placefholder",
+          "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvpqYPlYA7HyHKZDK9p8mShu9J0u9xD7xmoA&s",
           "content": [
             "Patrick Roger - This sculptor-turned-chocolatier creates edible art in his minimalist Saint-Germain boutique. Known for his vibrant green packaging and avant-garde window displays, Roger's signature creations include herb-infused ganaches and caramels with Amazonian ingredients.",
             "Jacques Genin - In his elegant Marais atelier, Genin crafts exquisite chocolates and caramels that Parisians line up for. His fresh mint chocolate and mango-passion fruit caramels are legendary, and visitors can watch artisans at work in the open kitchen.",
@@ -289,7 +289,7 @@
         {
           "title": "Epicurean Adventure in Singapore's Hawker Centers",
           "description": "Embark on a culinary journey through Singapore's UNESCO-recognized hawker culture, where diverse ethnic influences create a unique food scene offering world-class cuisine at affordable prices in communal dining settings.",
-          "cover_image": "placeholder",
+          "cover_image": "https://wanderthemap.com/wp-content/uploads/2020/04/Adventures_in_Singapore_06.jpg",
           "content": [
             "Maxwell Food Centre - Home to the famous Tian Tian Hainanese Chicken Rice (endorsed by Anthony Bourdain), this hawker center near Chinatown houses over 100 stalls including other standouts like Amoy Street Rojak and Maxwell Fuzhou Oyster Cake.",
             "Old Airport Road Food Centre - This massive hawker center in Geylang is considered by many locals to serve the best traditional dishes. Don't miss the legendary Soya Beancurd from Lao Ban, satay from Chuan Kee, or fried kway teow from Dong Ji.",
@@ -306,7 +306,7 @@
         {
           "title": "Nordic Noir Filming Locations in Scandinavia",
           "description": "Experience the atmospheric settings that bring Scandinavian crime dramas to life through this tour of iconic filming locations from popular Nordic Noir television series and films across Denmark, Sweden, and Norway.",
-          "cover_image": "placeholder",
+          "cover_image": "https://www.dailyscandinavian.com/wp-content/uploads/2022/08/180822-nordic-noir-f-i-michael-fousert-unsplash.jpg",
           "content": [
             "Øresund Bridge, Copenhagen/Malmö - The iconic 5-mile bridge-tunnel connecting Denmark and Sweden serves as both the literal and symbolic centerpiece of 'The Bridge' series, where a body is found exactly on the border between the two countries.",
             "Christiansborg Palace, Copenhagen - The stunning neo-baroque palace houses the Danish Parliament and provides the political backdrop for 'Borgen,' with many exterior and some interior scenes filmed at the actual government building.",
@@ -323,7 +323,7 @@
         {
           "title": "Indigenous Art Trail of Australia's Northern Territory",
           "description": "Journey through the world's oldest continuing cultural tradition via this curated exploration of Aboriginal art centers, ancient rock art sites, and contemporary galleries showcasing the diverse artistic expressions of Australia's First Nations peoples.",
-          "cover_image": "placeholder",
+          "cover_image": "https://uluru.gov.au/static/f25673a4ab6f47a4979446f14286cb10/e7735/uktnp-inline-image-cultural-centre-picnic-area.jpg",
           "content": [
             "Uluṟu-Kata Tjuṯa Cultural Centre - Begin your journey at this center near Uluru (Ayers Rock) where Aṉangu artists demonstrate traditional dot painting techniques and explain the meaning behind symbols used in their art that convey Tjukurpa (ancestral stories).",
             "Museum and Art Gallery of the Northern Territory, Darwin - The annual Telstra National Aboriginal & Torres Strait Islander Art Awards exhibition showcases the diversity of contemporary Indigenous art, from traditional bark paintings to cutting-edge multimedia works.",
@@ -340,7 +340,7 @@
         {
           "title": "Wes Anderson-esque Locations in New Orleans",
           "description": "Explore perfectly symmetrical, whimsically decorated, and color-coordinated locations that would fit perfectly in a Wes Anderson film, from historical buildings with pastel facades to meticulously designed interiors with vintage touches.",
-          "cover_image": "placeholder",
+          "cover_image": "https://ik.imgkit.net/3vlqs5axxjf/external/https://media.iceportal.com/109166/photos/78931195_XL.jpg?tr=w-1200%2Cfo-auto",
           "content": [
             "The Eliza Jane Hotel - This boutique hotel occupies what was once the Daily Picayune newspaper headquarters, with symmetrical architecture, jewel-toned furnishings, and brass fixtures arranged with meticulous precision in a manner that evokes The Grand Budapest Hotel's aesthetic.",
             "Brennan's Restaurant - The vibrant pink exterior and perfectly arranged dining rooms with their distinct color palettes (the green Chanteclair Room, the red Rooster Room) showcase the kind of bold color blocking and immaculate composition that would make Wes Anderson proud.",
@@ -374,7 +374,7 @@
         {
           "title": "Studio Ghibli Moments in Portland, Oregon",
           "description": "Discover whimsical, magical settings in Portland that evoke the enchanting worlds of Hayao Miyazaki's animations, from lush forest gardens with hidden spirits to quaint teahouses and mystical bookshops that capture the wonder and imagination of Studio Ghibli films.",
-          "cover_image": "placeholder",
+          "cover_image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/a3/65/fb/the-snow-viewing-lantern.jpg?w=1200&h=-1&s=1",
           "content": [
             "Portland Japanese Garden - The magical forests in 'Princess Mononoke' and 'My Neighbor Totoro' come to life in this authentic Japanese garden, where moss-covered stone lanterns and winding paths through towering pines create a realm where forest spirits might lurk just out of sight.",
             "Lan Su Chinese Garden - The ancient wooden pavilions overlooking tranquil koi ponds feel straight out of 'Spirited Away,' especially during the annual Autumn Moon Festival when paper lanterns illuminate the water features, creating an otherworldly glow.",
@@ -408,7 +408,7 @@
         {
           "title": "Rainy Day Retreats in Seattle",
           "description": "Embrace Seattle's famous precipitation with this curated collection of cozy, inviting spaces perfect for drizzly Pacific Northwest days, from steam-windowed cafés and independent bookstores to museums and indoor gardens where rain transforms the experience rather than diminishing it.",
-          "cover_image": "placeholder",
+          "cover_image": "https://www.emeraldpalate.com/wp-content/uploads/2025/04/Things-to-Do-on-a-Rainy-Day-in-Seattle-HERO.jpg",
           "content": [
             "Elliott Bay Book Company - This Capitol Hill institution houses over 150,000 titles on cedar shelves under timber beams, with hidden reading nooks where you can lose yourself in literature while raindrops create a soothing soundtrack on the skylights above.",
             "Volunteer Park Conservatory - The Victorian glass and cast-iron greenhouse becomes especially magical during rainfall, as thousands of exotic plants thrive in the humidity while raindrops create mesmerizing patterns on the greenhouse glass panels.",
@@ -442,7 +442,7 @@
         {
           "title": "The Life Aquatic in Monterey Bay",
           "description": "Dive into the spectacular marine world of Monterey Bay, where the protected waters of this ecological treasure house harbor an extraordinary diversity of sea life, from playful sea otters and magnificent whales to vibrant tide pools and world-class aquarium exhibits.",
-          "cover_image": "placeholder",
+          "cover_image": "https://www.montereybayaquarium.org/globalassets/mba/images/exhibits/kelp-forest/kelp-forest-rw16-316-1.jpg",
           "content": [
             "Monterey Bay Aquarium - The crown jewel of marine education features a three-story kelp forest tank, mesmerizing jellyfish exhibitions, and the Open Sea exhibit where tuna and sea turtles glide above your head, all housed in a converted sardine cannery on historic Cannery Row.",
             "Point Lobos State Natural Reserve - Called 'the greatest meeting of land and water in the world' by landscape artist Francis McComas, the protected coves here offer spectacular tide pooling where you can spot sea stars, anemones, and octopuses in their natural habitat.",
@@ -459,7 +459,7 @@
         {
           "title": "Vintage Vinyl Vibes in Nashville",
           "description": "Journey through Nashville's nostalgic musical landscape with this tour of record stores, listening rooms, and vintage-inspired venues that celebrate the warm, authentic sound of vinyl and the retro aesthetics that accompany classic album culture.",
-          "cover_image": "placeholder",
+          "cover_image": "https://charlestonmag.com/sites/default/files/Continental_10682_0.jpg",
           "content": [
             "Grimey's New & Preloved Music - This Nashville institution housed in a former 1930s auto repair shop features wooden crates packed with carefully curated vinyl spanning all genres, regular in-store performances, and knowledgeable staff who can help track down obscure pressings.",
             "The Groove - Located in a converted Victorian house in East Nashville, this indie record store features rooms organized by genre, a listening station built into an old phone booth, and a collection of local artists' limited pressings unavailable elsewhere.",
@@ -494,7 +494,7 @@
           {
             "title": "Marilyn Monroe's Top Moments in NYC",
             "description": "Explore the iconic Manhattan locations that shaped Marilyn Monroe's legacy, from her legendary subway grate scene to the glamorous hotels and theaters that witnessed her transformation from aspiring model to Hollywood legend in the city that never sleeps.",
-            "cover_image": "placeholder",
+            "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgkduYmMWEvYgsERwroQLo8m3o3hNuC0Ou_g&s",
             "content": [
               "The Iconic Subway Grate (Lexington Avenue & 52nd Street) - Stand on the exact spot where the most recognizable image in film history was captured on September 15, 1954, when Marilyn's white dress billowed up during filming of 'The Seven Year Itch,' creating an image that would define her legacy forever.",
               "The Ambassador Hotel (former site at 51st & Park Avenue) - This elegant accommodation was Marilyn's home during her early modeling days in the late 1940s, where she stayed while taking acting classes and posing for her first magazine covers before Hollywood fame struck.",
@@ -511,7 +511,7 @@
           {
             "title": "Introverts' Paradise in Toronto",
             "description": "Discover tranquil, low-stimulation spaces across Toronto that offer peaceful retreats for those who cherish solitude, quiet contemplation, and meaningful experiences without the overwhelm of crowds and social pressure.",
-            "cover_image": "placeholder",
+            "cover_image": "https://www.toronto.ca/wp-content/uploads/2024/02/8dc8-allan-gardens-conservatory-palm-house-outside.jpg",
             "content": [
               "Allan Gardens Conservatory (160 Gerrard St E) - This Victorian-era glass dome houses a botanical sanctuary where you can wander alone among tropical plants and seasonal flower shows, finding solitude on a bench beside trickling fountains with a book—all without the pressure of conversation.",
               "The Quiet Library at Hart House (7 Hart House Circle) - Tucked away within the University of Toronto campus, this wood-paneled reading room with leaded glass windows offers deep leather armchairs beside stone fireplaces where you can read, think, or simply enjoy the contemplative silence.",
@@ -528,7 +528,7 @@
           {
             "title": "Kylie Jenner's Lip Smacking LA Bites",
             "description": "Experience Los Angeles through the lens of the beauty mogul's social media-documented food adventures, from exclusive reservation-only restaurants to hidden gem eateries that have received the ultimate Kylie seal of approval on her journey from reality star to billionaire entrepreneur.",
-            "cover_image": "placeholder",
+            "cover_image": "https://www.nobuhotels.com/malibu/content/uploads/2024/05/Nobu-Malibu-Dining_Courtesy-of-Nobu-Restaurants-v2.jpg",
             "content": [
               "Nobu Malibu (22706 Pacific Coast Highway) - This oceanfront Japanese fusion hotspot is a Jenner-Kardashian family staple where Kylie frequently indulges in crispy rice with spicy tuna and miso black cod while documenting sunset ocean views from the exclusive patio tables.",
               "Jon & Vinny's (412 N. Fairfax Ave) - The upscale Italian-American eatery where Kylie's pasta carbonara order became so famous that fans call it 'The Kylie' when requesting the creamy, perfectly al dente dish that regularly appears in her Instagram stories.",
@@ -545,7 +545,7 @@
           {
             "title": "Cesar Chavez Day Journey in California's Central Valley",
             "description": "Honor the legacy of the legendary labor leader and civil rights activist through this tour of significant locations in California's agricultural heartland that shaped his fight for farmworker justice, from historic strike headquarters to the peaceful sanctuary where he found respite from struggle.",
-            "cover_image": "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+            "cover_image": "https://assets.simpleviewinc.com/simpleview/image/upload/crm/travelsantaana/3.-Cesar-Chavez-Business-and-Computer-Center---Santa-Ana-College_8E1F6C44-5056-A36A-089088FA23D476D6-8e1f5c955056a36_8e1f6f57-5056-a36a-08ea82b96f9f3df9.jpg",
             "content": [
               "The Forty Acres (30168 Garces Highway, Delano) - This National Historic Landmark served as the original United Farm Workers headquarters where the historic 1965 Delano Grape Strike was organized, featuring the movement's gas station, health clinic, and Agbayani Village retirement home for Filipino farmworkers.",
               "La Paz (29700 Woodford-Tehachapi Rd, Keene) - Visit the serene compound in the Tehachapi Mountains where Chavez lived, worked, and is now buried, housing the César E. Chávez National Monument, his preserved office, and the UFW's current headquarters within a former tuberculosis sanatorium.",
@@ -562,7 +562,7 @@
           {
             "title": "The Originals Does NOLA",
             "description": "Journey through the supernatural side of New Orleans with this tour of locations featured in the hit vampire series 'The Originals,' exploring the authentic occult shops, historic cemeteries, and atmospheric locations that bring the show's unique blend of darkness, magic, and immortal intrigue to life.",
-            "cover_image": "https://images.unsplash.com/photo-1571893544028-06b07af6dade?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+            "cover_image": "https://images.squarespace-cdn.com/content/v1/5f29a7457915e016958b5c63/501f9572-03c0-4b03-af20-8c883eaf22ee/Boutique+1_.jpg",
             "content": [
               "Lafayette Cemetery No. 1 (1427 Washington Ave) - This historic garden district cemetery doubles as the witches' gathering place in the show, with its distinctive above-ground tombs and moss-draped paths creating the perfect backdrop for magical rituals and supernatural confrontations.",
               "Napoleon House (500 Chartres St) - The 200-year-old former home of the mayor who offered refuge to Napoleon serves as Rousseau's bar in the series, where vampires and witches scheme over Sazeracs beneath weathered walls and a patina that genuinely feels centuries old.",
@@ -579,7 +579,7 @@
           {
             "title": "Eat, Pray, Love in Bali",
             "description": "Follow in Elizabeth Gilbert's transformative footsteps through Bali with this thoughtfully curated collection of spiritual sanctuaries, nourishing food experiences, and healing practitioners that capture the island's unique ability to transform visitors through its tradition of balance and self-discovery.",
-            "cover_image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80",
+            "cover_image": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/07/39/c0/a0.jpg",
             "content": [
               "Ketut Liyer's Family Compound (Pengosekan, Ubud) - Visit the home of the late medicine man who played a pivotal role in Gilbert's journey, where his family continues offering palm readings in the same garden setting, though with less of the international fame that followed the book's publication.",
               "Sacred Monkey Forest Sanctuary (Jl. Monkey Forest, Ubud) - Wander the moss-covered ancient temples within this spiritual forest where monkeys roam freely among visitors, representing the delicate balance between human religious spaces and nature that characterizes Balinese Hinduism.",
@@ -596,7 +596,7 @@
           {
             "title": "Girls Night Out in Miami",
             "description": "Experience the ultimate ladies' evening in Miami with this curated collection of female-friendly venues offering everything from craft cocktails and Latin-inspired cuisine to rooftop sunset views and late-night dancing, all designed for making memories with your closest friends.",
-            "cover_image": "https://images.unsplash.com/photo-1661956602926-db6b25f75947?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1198&q=80",
+            "cover_image": "https://vizcaya.org/wp-content/uploads/2021/03/BR7A0673-1536x1024.jpg",
             "content": [
               "Sugar Rooftop Bar (788 Brickell Plaza) - Begin your evening 40 floors above Miami watching the sunset transform Biscayne Bay into a canvas of pink and orange hues while sipping Asian-inspired cocktails in an elevated garden setting that's perfect for group photos against the sparkling cityscape.",
               "Café La Trova (971 SW 8th St) - Immerse yourselves in Little Havana's vibrant energy at this James Beard Award-winning venue where classically trained cantineros in bow ties shake daiquiris tableside as live bands perform, creating the perfect backdrop for salsa dancing between small plates.",
@@ -613,7 +613,7 @@
           {
             "title": "Nature Boy in Rocky Mountain National Park",
             "description": "Channel David Bowie's cosmic connection to the natural world with this collection of transcendent hiking experiences in Colorado's majestic wilderness, where alpine meadows, crystal-clear lakes, and towering peaks create opportunities for both solitary contemplation and starman-worthy vistas.",
-            "cover_image": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1276&q=80",
+            "cover_image": "https://www.skyblueoverland.com/wp-content/uploads/AdobeStock_511425703-1024x628.jpg",
             "content": [
               "Sky Pond via Glacier Gorge Trail - Embark on this challenging 9-mile round-trip hike featuring a scramble up a waterfall to reach an otherworldly alpine lake surrounded by sheer granite spires—the perfect setting for cosmic contemplation or belting out 'The Man Who Sold the World.'",
               "Emerald Lake Trail - Experience a progressive revelation of beauty on this moderate 3.5-mile journey past three stunning lakes, each more vibrant than the last, culminating at Emerald Lake where Hallett Peak creates dramatic reflections worthy of Bowie's most theatrical personas.",
@@ -630,7 +630,7 @@
           {
             "title": "Feeling 22 in NYC",
             "description": "Celebrate your twenty-second year (or channel your inner Taylor Swift) with this collection of quintessential New York City experiences designed for youthful energy and optimism, combining glamorous moments, spontaneous adventures, and memory-making opportunities in the city that never sleeps.",
-            "cover_image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_7lN0M0tJ14qDJ2nP9wyCvvClpghpIoM8_g&s",
             "content": [
               "The Edge Observation Deck (30 Hudson Yards) - Feel 'happy, free, confused and lonely' all at once as you step onto the highest outdoor sky deck in the Western Hemisphere, where the glass floor and angled walls create the illusion of floating 1,131 feet above Manhattan's glittering grid.",
               "Sing Sing Karaoke (81 Avenue A) - Embrace the 'miserable and magical' duality by renting a private room with friends to belt out '22' and other Taylor anthems, complete with disco lights and all-night drink service that keeps the party going until 4am.",
@@ -647,7 +647,7 @@
           {
             "title": "Black Cat Energy vs. Golden Retriever Energy in Austin",
             "description": "Explore Austin's dual personality through locations that embody contrasting energies: the mysterious, independent, and sometimes aloof vibe of black cats versus the enthusiastic, friendly, and approachable golden retriever spirit, each offering a unique lens through which to experience the city.",
-            "cover_image": "https://images.unsplash.com/photo-1531218150217-54595bc2b934?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80",
+            "cover_image": "https://media.cntraveler.com/photos/5ab00110be28d60dd24cff95/master/pass/Midnight-cowboy_-Molly-Culver_2018_MidnightCowboy-0001.jpg",
             "content": [
               "BLACK CAT: Midnight Cowboy (313 E 6th St) - This secretive speakeasy requires reservations and entrance through an unmarked door, serving meticulously crafted cocktails in a dimly lit, intimate setting where conversations remain private and strangers rarely intermingle.",
               "GOLDEN RETRIEVER: Zilker Park (2100 Barton Springs Rd) - This 350-acre green space pulses with communal energy as strangers strike up conversations while their dogs play together, frisbees are shared among new friends, and spontaneous guitar circles welcome anyone who wants to join.",
@@ -665,7 +665,7 @@
             {
               "title": "Sunday Morning-esque in Portland, Maine",
               "description": "Embrace the unhurried pleasure of a perfect Sunday morning in Portland, Maine, with this collection of tranquil experiences designed for slow living—from waterfront strolls and artisanal bakeries to independent bookstores and scenic viewpoints that invite contemplation and peace.",
-              "cover_image": "https://images.unsplash.com/photo-1582486225644-680357de57dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              "cover_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynJr5Ucqn3Z13IKt4U3uTu5YlXUlrUpzYSQ&s",
               "content": [
                 "Tandem Coffee + Bakery (742 Congress St) - Begin your unhurried morning in this converted gas station where the scent of freshly baked cardamom buns and malted chocolate chip cookies mingles with slow-dripped coffee, best enjoyed in the sunshine at picnic tables without rushing.",
                 "Eastern Promenade Trail - Meander along this waterfront path at your own pace, watching sailboats drift across Casco Bay while harbor seals occasionally pop their heads above the surface—the 2-mile trail perfect for contemplative walking without any particular destination in mind.",
@@ -682,7 +682,7 @@
             {
               "title": "Wes Anderson-esque Locations in New Orleans",
               "description": "Explore perfectly symmetrical, whimsically decorated, and color-coordinated locations that would fit perfectly in a Wes Anderson film, from historical buildings with pastel facades to meticulously designed interiors with vintage touches.",
-              "cover_image": "https://images.unsplash.com/photo-1568632234168-b513ccb50a67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              "cover_image": "https://ik.imgkit.net/3vlqs5axxjf/external/https://media.iceportal.com/109166/photos/78931195_XL.jpg?tr=w-1200%2Cfo-auto",
               "content": [
                 "The Eliza Jane Hotel (315 Magazine St) - This boutique hotel occupies what was once the Daily Picayune newspaper headquarters, with symmetrical architecture, jewel-toned furnishings, and brass fixtures arranged with meticulous precision in a manner that evokes The Grand Budapest Hotel's aesthetic.",
                 "Brennan's Restaurant (417 Royal St) - The vibrant pink exterior and perfectly arranged dining rooms with their distinct color palettes (the green Chanteclair Room, the red Rooster Room) showcase the kind of bold color blocking and immaculate composition that would make Wes Anderson proud.",
@@ -699,7 +699,7 @@
             {
               "title": "Studio Ghibli Moments in Kyoto",
               "description": "Experience the enchanting, otherworldly atmosphere that inspired many of Hayao Miyazaki's beloved animated films through this collection of Kyoto locations that embody the distinctive Studio Ghibli aesthetic of natural beauty, traditional architecture, and magical realism.",
-              "cover_image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              "cover_image": "https://cambooth.net/wp-content/uploads/2019/06/20190611-Inari-Shrine-Torii-Gates.jpg",
               "content": [
                 "Fushimi Inari Shrine's Torii Path - Wander through thousands of vermilion gates creating an otherworldly tunnel reminiscent of the spirit realm in 'Spirited Away,' especially magical during early morning or dusk when fog sometimes creeps between the gates like animated spirits.",
                 "Arashiyama Bamboo Grove - Step into a scene straight from 'Princess Mononoke' as sunlight filters through towering bamboo stalks creating ethereal green light and the distinctive rustling sound that feels like nature's spirits might appear at any moment.",
@@ -716,7 +716,7 @@
             {
               "title": "Where Witches Gather in Salem",
               "description": "Discover the authentic magical heart of Salem beyond tourist traps with this collection of genuine witch-owned businesses, sacred sites, and historical locations that honor both the tragic history and the vibrant present of America's most famous witchcraft destination.",
-              "cover_image": "https://images.unsplash.com/photo-1508341591423-4347099e1f19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+              "cover_image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/a8/7a/63/hex-old-world-witchery.jpg?w=900&h=500&s=1",
               "content": [
                 "Hex: Old World Witchery (246 Essex St) - Owned by practicing witches, this authentic shop provides ritual tools, spell components, and custom magical items with a focus on education rather than exploitation, hosting respected practitioners for workshops on traditional folk magic.",
                 "The Witch House (310 1/2 Essex St) - Explore the only structure still standing with direct ties to the 1692 witch trials—the home of Judge Jonathan Corwin—featuring period-accurate architecture and exhibits examining the complex social, religious, and economic factors behind the trials.",
@@ -750,7 +750,7 @@
             {
               "title": "Twilight Tour of Forks, Washington",
               "description": "Step into the atmospheric world of Stephenie Meyer's vampire saga with this tour of the Olympic Peninsula's misty forests, moody beaches, and small-town locations that inspired and served as settings for the Twilight series, creating an immersive experience for fans of the books and films.",
-              "cover_image": "https://images.unsplash.com/photo-1478538609316-a52ddb9decfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80",
+              "cover_image": "https://media.tacdn.com/media/attractions-splice-spp-674x446/10/5e/82/98.jpg",
               "content": [
                 "Forks Visitor Center (1411 S Forks Ave) - Begin your Twilight journey at this essential first stop housing original props from the films, a recreation of Bella's red truck, and the official Logging Capital of the World sign seen in the movies, with staff offering maps to key locations throughout the town.",
                 "La Push Beaches - Experience the atmospheric power of First Beach where Jacob first told Bella the 'cold ones' legend, with its dramatic sea stacks, driftwood-strewn shore, and frequent mist creating the perfect moody backdrop for contemplating supernatural romance.",
@@ -767,7 +767,7 @@
             {
               "title": "The Queen's Gambit Chess Tour of Lexington, Kentucky",
               "description": "Explore the real-life settings featured in the hit Netflix series about chess prodigy Beth Harmon, visiting filming locations, chess-related spots, and mid-century architectural gems that bring the fictional Kentucky of the 1950s and 60s to life.",
-              "cover_image": "https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1258&q=80",
+              "cover_image": "https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_675,q_75,w_1200/v1/clients/lexington/harmon_room_wide_v3_fe764099-e5a7-4d3e-b711-6a522e6ed64d.jpg",
               "content": [
                 "The Lexington Herald-Leader Building (100 Midland Ave) - This mid-century modern architectural gem served as the exterior of the fictional Ben Snyder's Department Store where young Beth shoplifted chess magazines to fuel her early obsession with the game.",
                 "Wheeler Pharmacy (824 Euclid Ave) - Visit this authentic 1950s drugstore and lunch counter that embodies the nostalgic Americana of Beth's Kentucky hometown, offering the opportunity to sit at a retro soda fountain while strategizing your next chess move.",
@@ -784,7 +784,7 @@
             {
               "title": "Picnic Perfection in San Francisco",
               "description": "Create the ultimate outdoor dining experience with this curated collection of San Francisco's finest specialty food shops and most scenic parks, combining breathtaking views with delectable local provisions for picnics that elevate the simple pleasure of eating outdoors.",
-              "cover_image": "https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              "cover_image": "https://www.sftravel.com/sites/default/files/styles/share_image/public/2022-11/dolores-park-mission-district-picnic.jpg.webp?itok=9X3AKqPI",
               "content": [
                 "Bi-Rite Market (3639 18th St) + Dolores Park - Begin at this beloved gourmet shop for made-to-order sandwiches, local cheeses, and freshly baked cookies before walking two blocks to this sunny park with panoramic city views and a vibrant local atmosphere perfect for people-watching.",
                 "Ferry Building Marketplace (1 Ferry Building) + Rincon Park - Assemble a market basket from the artisanal vendors inside this historic terminal—perhaps Cowgirl Creamery cheese, Acme bread, and Frog Hollow Farm fruit—then stroll to this waterfront green space offering unobstructed Bay Bridge views.",
@@ -801,7 +801,7 @@
             {
               "title": "Grandparent's Secret Recipes in Puglia, Italy",
               "description": "Discover the culinary soul of southern Italy through Puglia's most authentic food experiences, where time-honored traditions passed through generations are preserved in family-run trattorias, ancient masserie, and local homes that share the region's distinctive, rustic cuisine.",
-              "cover_image": "https://images.unsplash.com/photo-1661347334008-da5448d2a6bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              "cover_image": "https://pugliaparadise.com/wp-content/uploads/2023/07/weekly-local-market-1_risultato-1024x683-1.jpg",
               "content": [
                 "Nonna Vanna's Cooking School (Via Orfanelle 11, Bari) - Learn to shape orecchiette pasta using only your thumb and a knife in this grandmother's home kitchen, where she teaches the technique passed down through five generations before serving it with her family's traditional turnip green sauce.",
                 "Masseria Il Frantoio (Strada Statale 16, Ostuni) - Dine in a 500-year-old olive farm where the resident nonna prepares eight-course tasting menus featuring forgotten recipes collected from elderly villagers throughout Puglia, using only ingredients grown on the property or foraged from the surrounding countryside.",
@@ -818,7 +818,7 @@
             {
               "title": "Thrillseekers! in Queenstown, New Zealand",
               "description": "Challenge your limits with Queenstown's most heart-pounding adventure experiences, from bungee jumps launched by the original commercial operator to high-speed jet boat rides through narrow canyons, all set against the breathtaking backdrop of New Zealand's Southern Alps and crystal-clear lakes.",
-              "cover_image": "https://images.unsplash.com/photo-1531201890865-fb64780d16c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
+              "cover_image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/cb/75/1c/ledge-bungy.jpg?w=1200&h=1200&s=1",
               "content": [
                 "AJ Hackett Nevis Bungy (45 Camp St) - Take the 134-meter plunge from New Zealand's highest bungy platform, suspended on a cable car above the Nevis River canyon where the 8.5-second freefall creates such intense acceleration that many jumpers report time itself seems to slow down.",
                 "Shotover Canyon Swing (34 Shotover St) - Experience the world's highest cliff jump as you're harnessed to a specialized swing system that sends you on a 200-meter arc through the spectacular Shotover Canyon, with over 70 different jump styles from the 'Chair of Death' to the 'Elvis Cutaway.'",

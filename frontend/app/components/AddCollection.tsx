@@ -1,14 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
-import Modal from './Modal';
+import { useState, useRef, useEffect } from "react";
+import useData from "../hooks/useData";
+import Modal from "./Modal";
 
 type AddTabModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onAdd: (name: string) => void;
 };
 
-const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose, onAdd }) => {
-  const [name, setName] = useState('');
+const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
+  const { addCollection } = useData();
+  const [name, setName] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -18,12 +19,14 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose, onAdd }) => 
   }, [isOpen]);
 
   const handleAdd = () => {
-    const trimmed = name.trim();
-    if (trimmed) {
-      onAdd(trimmed);
-      setName('');
-      onClose();
-    }
+    setName("");
+    addCollection({
+      name: name.trim(),
+      is_private: false,
+      fijalists: [],
+      description: "",
+    });
+    onClose();
   };
 
   return (
@@ -57,4 +60,3 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose, onAdd }) => 
 };
 
 export default AddTabModal;
-

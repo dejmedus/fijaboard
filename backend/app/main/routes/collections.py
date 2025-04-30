@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 
 from app.models.collection  import Collection
 from app.models.fijalist  import FijaList
+from app.models.fijalist_collection import FijaListCollection
 from app.extensions import db
 from app.main import main
 
@@ -101,6 +102,7 @@ def remove_fijalist_from_collection(collection_id, fijalist_id):
 
 
 @main.route('/collections', methods=['POST'])
+@login_required
 def create_collection():
     data = request.get_json()
 
@@ -108,6 +110,7 @@ def create_collection():
         name=data.get('name'),
         description=data.get('description'),
         is_private=data.get('is_private'),
+        user_id=current_user.id
     )
 
     db.session.add(collection)
@@ -122,10 +125,15 @@ def create_collection():
 
 
 @main.route('/collections/<int:id>', methods=['PUT'])
+@login_required
 def update_collection(id):
     data = request.get_json()
 
     collection = Collection.query.get_or_404(id)
+
+    if collection.user_id != current_user.id:
+        return jsonify({"error": "Not authorized"}), 403
+
     collection.name = data.get('name', collection.name)
     collection.description = data.get('description', collection.description)
     collection.is_private = data.get('is_private', collection.is_private)
@@ -141,10 +149,16 @@ def update_collection(id):
 
 
 @main.route('/collections/<int:id>', methods=['DELETE'])
+@login_required
 def delete_collection(id):
     collection = Collection.query.get_or_404(id)
-
+    
+    if collection.user_id != current_user.id:
+        return jsonify({"error": "Not authorized"}), 403
+    
+    FijaListCollection.query.filter_by(collection_id=id).delete()
+    
     db.session.delete(collection)
     db.session.commit()
-
+    
     return jsonify({"message": "Collection deleted successfully"}), 200

@@ -1,23 +1,23 @@
 interface User {
-  id: string;
+  id: number;
   username: string;
   email: string;
   profile_picture?: string | null;
-  collections?: Collection[];
+  collections: Collection[];
 }
 
 interface Collection {
-  id: string;
+  id?: number;
   name: string;
   description: string;
-  is_private: boolean;
-  fijalist?: Fijalist[];
-  created_at: Date;
-  updated_at: Date;
+  is_private?: boolean;
+  fijalists?: Fijalist[];
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 interface Fijalist {
-  id: string;
+  id: number;
   title: string;
   description: string;
   content: string;
@@ -28,7 +28,7 @@ interface Fijalist {
 }
 
 interface Tag {
-  id: string;
+  id: number;
   name: string;
 }
 

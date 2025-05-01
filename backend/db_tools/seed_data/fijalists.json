@@ -14,6 +14,7 @@
           "Key West First Legal Rum Distillery - While not directly connected to Hemingway..."
         ],
         "tags": ["literature", "florida", "key-west", "hemingway", "food-drink", "pubs"],
+        "collections": ["Myshkin's Literary Journeys"],
         "created_at": null,
         "updated_at": null
       },
@@ -27,6 +28,7 @@
           "Coava Coffee Roasters - Industrial-chic cafe with single-origin..."
         ],
         "tags": ["coffee", "portland", "cafes"],
+        "collections": ["Myshkin's Hidden Gems", "Urban Exploration"],
         "created_at": null,
         "updated_at": null
       },
@@ -43,6 +45,7 @@
           "Mount Hood from Trillium Lake, Oregon - This stunning view with the mountain reflected in the still lake is reminiscent of Ross's 'Reflections of Calm'. The composition with trees framing the mountain is classic Bob Ross."
         ],
         "tags":["nature", "art", "pacific-northwest"],
+        "collections": ["Tavi's Nature Collection"],
         "created_at": null,
         "updated_at": null
       },
@@ -61,7 +64,8 @@
         ],
         "created_at": null,
         "updated_at": null,
-        "tags": ["animals", "san-diego", "travel", "food-drink"]
+        "tags": ["animals", "san-diego", "travel", "food-drink"],
+        "collections": ["Tavi's Nature Collection", "Myshkin's Hidden Gems"]
       },
       {
         "title": "Literary Landmarks in Dublin",
@@ -77,6 +81,7 @@
           "The Abbey Theatre - Founded by W.B. Yeats and Lady Gregory in 1904, this is Ireland's national theater and played a crucial role in promoting Irish literary talent."
         ],
         "tags": ["literature", "travel", "ireland","food-drink", "pubs"],
+        "collections": ["Myshkin's Literary Journeys", "Urban Exploration"],
         "created_at": null,
         "updated_at": null
       },
@@ -94,6 +99,7 @@
           "Chicago Cultural Center - Free to enter and home to the world's largest Tiffany glass dome, intricately designed mosaics, and marble staircases housed in what was once the city's first public library."
         ],
         "tags": ["architecture", "chicago", "design", "history"],
+        "collections": ["Urban Exploration", "Myshkin's Hidden Gems"],
         "created_at": null,
         "updated_at": null
       },
@@ -111,6 +117,7 @@
           "Collingwood Arts Precinct - This former technical school has been transformed into a creative hub with building-sized murals and installations throughout the surrounding streets."
         ],
         "tags": ["art", "street-art", "melbourne", "urban-culture"],
+        "collections": ["Urban Exploration", "Myshkin's Hidden Gems"],
         "created_at": null,
         "updated_at": null
       },
@@ -128,6 +135,7 @@
           "Amrheins - South Boston's oldest tavern (established 1890) features the oldest hand-carved bar in America and the first draft beer system in Boston."
         ],
         "tags": ["history", "boston", "food-drink", "pubs"],
+        "collections": ["Urban Exploration", "Myshkin's Hidden Gems"],
         "created_at": null,
         "updated_at": null
       },
@@ -145,6 +153,7 @@
           "Dosa Delight - South Indian vegetarian haven in Jackson Heights serving crispy dosas, uttapam, and thali platters that showcase the regional flavors of southern India."
         ],
         "tags": ["food", "queens", "asian-cuisine", "restaurants"],
+        "collections": ["Tavi's Foodie Collection", "Global Flavors"],
         "created_at": null,
         "updated_at": null
       },
@@ -162,6 +171,7 @@
           "Britannia Mine Museum - This former copper mine has been transformed into everything from secret military facilities to villain lairs in productions like The X-Files, Siren, and Fantastic Four."
         ],
         "tags": ["film", "vancouver", "travel", "entertainment"],
+        "collections": ["Myshkin's Hidden Gems"],
         "created_at": null,
         "updated_at": null
       },

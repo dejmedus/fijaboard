@@ -3,6 +3,7 @@ import json
 import os
 import sys
 from datetime import datetime, timezone
+from sqlalchemy import text
 
 # Add the parent directory to the path so we can import app modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -77,6 +78,8 @@ def seed_database():
         
         # Create fijalists
         print(f"Creating {len(fijalists_data)} fijalists...")
+        collections_added = 0
+        
         for fijalist_data in fijalists_data:
             # Extract tags list and remove from main data
             tags_list = fijalist_data.pop('tags', [])
@@ -104,29 +107,23 @@ def seed_database():
             
             # Connect collections
             if collections_list:
-                print(f"Adding {len(collections_list)} collections to fijalist: {fijalist.title}")
                 for collection_name in collections_list:
                     if collection_name in all_collections:
                         fijalist.collections.append(all_collections[collection_name])
-                        print(f"  - Added to collection: {collection_name}")
+                        collections_added += 1
                     else:
-                        print(f"  ! Collection not found: {collection_name}")
+                        print(f"Warning: Collection not found: {collection_name}")
                 
         # Final commit
         db.session.commit()
         
         # Print summary
-        print(f"Database seeded successfully with:")
+        print(f"\nDatabase seeded successfully with:")
         print(f"- {len(fijalists_data)} fijalists")
         print(f"- {len(users_data)} users")
         print(f"- {len(collections_data)} collections")
         print(f"- {len(all_tags)} tags")
-        
-        # Count fijalist_collection relationships
-        fijalist_collection_count = db.session.execute(
-            "SELECT COUNT(*) FROM fijalist_collection"
-        ).scalar()
-        print(f"- {fijalist_collection_count} fijalist-collection relationships")
+        print(f"- {collections_added} fijalist-collection relationships")
 
 if __name__ == "__main__":
     seed_database()

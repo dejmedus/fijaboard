@@ -14,9 +14,10 @@ const EditCollectionModal: React.FC<EditCollectionModalProps> = ({
   onClose, 
   collection 
 }) => {
-  const { updateCollection } = useData();
+  const { updateCollection, deleteCollection } = useData();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -28,6 +29,9 @@ const EditCollectionModal: React.FC<EditCollectionModalProps> = ({
       setName(collection.name);
       setDescription(collection.description || "");
     }
+    
+    // reset delete confirmation when modal opens/closes
+    setShowDeleteConfirm(false);
   }, [isOpen, collection]);
 
   const handleUpdate = async () => {
@@ -41,6 +45,16 @@ const EditCollectionModal: React.FC<EditCollectionModalProps> = ({
         description: description.trim()
       }
     );
+    
+    if (success) {
+      onClose();
+    }
+  };
+  
+  const handleDelete = async () => {
+    if (!collection || !collection.id) return;
+    
+    const success = await deleteCollection(String(collection.id));
     
     if (success) {
       onClose();
@@ -79,21 +93,51 @@ const EditCollectionModal: React.FC<EditCollectionModalProps> = ({
           />
         </div>
         
-        <div className="flex justify-end gap-2">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleUpdate}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            disabled={!name.trim()}
-          >
-            Save
-          </button>
-        </div>
+        {!showDeleteConfirm ? (
+          <div className="flex justify-between gap-2">
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            >
+              Delete Collection
+            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={onClose}
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleUpdate}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                disabled={!name.trim()}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="border-t border-gray-200 pt-4">
+            <p className="text-sm text-gray-600 mb-4">
+              Are you sure you want to delete this collection? This action cannot be undone.
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Confirm Delete
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </Modal>
   );

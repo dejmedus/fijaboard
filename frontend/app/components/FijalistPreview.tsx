@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import type { Fijalist } from "~/lib/types";
 import { saveScrollPosition } from "../hooks/useScrollPosition";
 import useData from "~/hooks/useData";
+import { useState, useEffect } from "react";
+import Toast from "./Toast";
 
 interface FijalistPreviewProps {
   fijalist: Fijalist;
@@ -16,6 +18,8 @@ export default function FijalistPreview({
 }: FijalistPreviewProps) {
   const { collections, addFijalistToCollection, removeFijalistFromCollection } =
     useData();
+  const [toast, setToast] = useState({ visible: false, message: '' });
+  const [collectionNames, setCollectionNames] = useState<string[]>([]);
 
   // helper to truncate content to a shorter preview
   const truncateContent = (content: string, maxLength = 300) => {
@@ -27,6 +31,85 @@ export default function FijalistPreview({
   const handleViewFullList = () => {
     saveScrollPosition("catalog");
     onClose();
+  };
+  
+  // check if fijalist is in any collections
+  useEffect(() => {
+    if (fijalist && collections.length > 0) {
+      const names: string[] = [];
+      
+      collections.forEach(collection => {
+        if (collection.fijalists?.some(f => String(f.id) === String(fijalist.id))) {
+          names.push(collection.name);
+        }
+      });
+      
+      setCollectionNames(names);
+    }
+  }, [fijalist, collections]);
+  
+  // handle adding to collection
+  const handleAddToCollection = async (collectionId: string) => {
+    if (!collectionId) return;
+    
+    const success = await addFijalistToCollection(collectionId, fijalist);
+    if (success) {
+      const collection = collections.find(c => String(c.id) === collectionId);
+      const collectionName = collection ? collection.name : 'collection';
+      
+      // update collection names
+      setCollectionNames(prev => [...prev, collectionName]);
+      
+      // show toast notid
+      setToast({
+        visible: true,
+        message: `"${fijalist.title}" added to ${collectionName}`
+      });
+    }
+  };
+  
+  // handle removing from collection
+  const handleRemoveFromCollection = async (collectionId: string) => {
+    if (!collectionId) return;
+    
+    const success = await removeFijalistFromCollection(
+      collectionId,
+      String(fijalist.id)
+    );
+    
+    if (success) {
+      const collection = collections.find(c => String(c.id) === collectionId);
+      const collectionName = collection ? collection.name : 'collection';
+      
+      // update collection names
+      setCollectionNames(prev => prev.filter(name => name !== collectionName));
+      
+      // show toast notif
+      setToast({
+        visible: true,
+        message: `"${fijalist.title}" removed from ${collectionName}`
+      });
+      
+      // close modal if in collection view
+      if (activeCollectionTab && activeCollectionTab !== 0) {
+        setTimeout(() => {
+          onClose();
+        }, 1000);
+      }
+    }
+  };
+  
+  // close toast
+  const handleCloseToast = () => {
+    setToast(prev => ({ ...prev, visible: false }));
+  };
+
+  // check if fijalist is already in the selected collection
+  const isInSelectedCollection = (collectionId: string) => {
+    if (!collections.length) return false;
+    
+    const collection = collections.find(c => String(c.id) === collectionId);
+    return collection?.fijalists?.some(f => String(f.id) === String(fijalist.id)) || false;
   };
 
   return (
@@ -81,11 +164,7 @@ export default function FijalistPreview({
                 const collectionId = String(
                   collections[activeCollectionTab - 1].id
                 );
-                await removeFijalistFromCollection(
-                  collectionId,
-                  String(fijalist.id)
-                );
-                onClose();
+                await handleRemoveFromCollection(collectionId);
               }}
               className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 cursor-pointer"
             >
@@ -94,17 +173,25 @@ export default function FijalistPreview({
           ) : (
             <select
               onChange={async (e) => {
-                await addFijalistToCollection(e.target.value, fijalist);
-                onClose();
+                await handleAddToCollection(e.target.value);
+                e.target.value = ""; // Reset select after selection
               }}
+              value=""
               className="border border-gray-300 rounded-md p-2"
             >
               <option value="">Add to Collection</option>
-              {collections.map((collection) => (
-                <option key={collection.id} value={collection.id}>
-                  {collection.name}
-                </option>
-              ))}
+              {collections.map((collection) => {
+                const isAlreadyInCollection = isInSelectedCollection(String(collection.id));
+                return (
+                  <option 
+                    key={collection.id} 
+                    value={collection.id}
+                    disabled={isAlreadyInCollection}
+                  >
+                    {collection.name} {isAlreadyInCollection ? '(Already added)' : ''}
+                  </option>
+                );
+              })}
             </select>
           )}
           <Link
@@ -116,6 +203,14 @@ export default function FijalistPreview({
           </Link>
         </div>
       </div>
+      
+      {/* toast notif */}
+      <Toast
+        message={toast.message}
+        isVisible={toast.visible}
+        onClose={handleCloseToast}
+        type="success"
+      />
     </div>
   );
 }

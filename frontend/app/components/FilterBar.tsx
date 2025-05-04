@@ -5,41 +5,157 @@ type FilterCategories = {
   [key: string]: string[];
 };
 
+// utility funct to format tag displays: convert hyphenated strings to title case
+const formatTagDisplay = (tag: string): string => {
+  return tag
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 // filter categories with their respective tags
 const filterCategories: FilterCategories = {
-  "Trip Type": [
-    "For Solo Travelers",
-    "For Families",
-    "For Friends",
-    "Cultural Immersion",
-    "Sustainable Tourism",
+  "Locations": [
+    "new-york-city", 
+    "san-francisco", 
+    "portland", 
+    "seattle", 
+    "miami", 
+    "new-orleans", 
+    "boston", 
+    "chicago", 
+    "tokyo", 
+    "paris", 
+    "london", 
+    "austin", 
+    "manhattan",
+    "queens", 
+    "brooklyn", 
+    "dublin", 
+    "rome", 
+    "melbourne", 
+    "key-west",
+    "vancouver",
+    "singapore", 
+    "santorini", 
+    "california",
+    "italy",
+    "france",
+    "uk",
+    "texas",
+    "florida",
   ],
-  "Budget": [
-    "Budget-Friendly",
-    "Mid-Range",
-    "Luxury Indulgences",
+  "Nature & Outdoors": [
+    "nature",
+    "animals",
+    "wildlife",
+    "outdoors",
+    "hiking",
+    "gardens",
+    "marine-life",
+    "eco-tourism",
+    "national-parks",
+    "geology",
+    "mountains",
+    "landscapes",
+    "outdoor-adventure",
+    "rain",
   ],
-  "Attractions": [
-    "Art Museum",
-    "Science Museum",
-    "Historical Landmarks",
-    "Architectural Wonders",
-    "Literary Landmarks",
-    "Hidden Gems",
-    "Photogenic Spots",
+  "Food & Drink": [
+    "food",
+    "food-drink",
+    "restaurants",
+    "cafes",
+    "coffee",
+    "street-food",
+    "fine-dining",
+    "chocolate",
+    "culinary",
+    "craft-beer",
+    "cocktails",
+    "pubs",
+    "asian-cuisine",
+    "italian-cuisine",
+    "hawker-centers",
+    "culinary-heritage",
+    "traditional",
+    "cooking",
+    "family-recipes",
+    "gourmet",
   ],
-  "Experiences": [
-    "Dining",
-    "Culinary Discoveries",
-    "Night Experiences",
-    "Day Experiences",
-    "Indie Boutiques",
-    "Lofi Beats",
-    "Seasonal Specialties",
+  "Art & Culture": [
+    "art",
+    "street-art",
+    "museums",
+    "culture",
+    "design",
+    "literature",
+    "history",
+    "architecture",
+    "urban-culture",
+    "indigenous",
+    "aboriginal",
+    "social-justice",
+    "metaphysical",
   ],
-  "Endorsements": [
-    "Expert Endorsed",
-    "Local Favorite",
+  "Entertainment": [
+    "music",
+    "jazz",
+    "vinyl",
+    "record-shops",
+    "record-stores",
+    "film",
+    "film-locations",
+    "filming-locations",
+    "television",
+    "nightlife",
+    "entertainment",
+    "dancing",
+    "vintage",
+    "retro",
+  ],
+  "Experience Types": [
+    "hidden-gems",
+    "outdoor-activities",
+    "family-friendly",
+    "urban-exploration",
+    "adventure",
+    "romantic",
+    "date-night",
+    "spiritual",
+    "historical",
+    "slow-living",
+    "relaxation",
+    "mindfulness",
+    "solitude",
+    "unique",
+    "celebration",
+    "cozy",
+    "shopping",
+    "indoor",
+    "picnic",
+    "travel",
+  ],
+  "Special Themes": [
+    "wes-anderson",
+    "studio-ghibli",
+    "miyazaki",
+    "anime-inspired",
+    "supernatural",
+    "witchcraft",
+    "bob-ross",
+    "twilight",
+    "taylor-swift",
+    "cesar-chavez",
+    "david-bowie",
+    "marilyn-monroe",
+    "hemingway",
+    "kylie-jenner",
+    "queens-gambit",
+    "chess",
+    "photography",
+    "aesthetics",
+    "sunset",
   ],
 };
 
@@ -126,7 +242,7 @@ export default function FilterBar({ selectedFilters, setSelectedFilters }: Filte
                     : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
-                {tag}
+                {formatTagDisplay(tag)}
               </button>
             ))}
           </div>
@@ -141,7 +257,7 @@ export default function FilterBar({ selectedFilters, setSelectedFilters }: Filte
               key={filter} 
               className="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm"
             >
-              {filter}
+              {formatTagDisplay(filter)}
               <button 
                 onClick={() => toggleFilter(filter)}
                 className="ml-1.5 text-purple-500 hover:text-purple-700"

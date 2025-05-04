@@ -3,8 +3,11 @@ import json
 import os
 import sys
 from datetime import datetime, timezone
+from sqlalchemy import text
+
 # Add the parent directory to the path so we can import app modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import create_app
 from app.extensions import db
 from app.models.fijalist import FijaList
@@ -22,6 +25,7 @@ def load_data(filename):
 def seed_database():
     """Seed the database with initial data"""
     app = create_app()
+    
     with app.app_context():
         print("Clearing existing data...")
         # Clear existing data - be careful with this in production!
@@ -47,7 +51,17 @@ def seed_database():
             print(f"Created {len(tags_data)} tags from tags.json")
         except FileNotFoundError:
             print("No tags.json file found, skipping")
-            
+        
+        # Create collections from collections.json
+        print("Creating collections...")
+        all_collections = {}
+        collections_data = load_data('collections.json')
+        for collection_data in collections_data:
+            collection = Collection(**collection_data)
+            db.session.add(collection)
+            # Store collection by name for easy lookup later
+            all_collections[collection_data['name']] = collection
+        
         # Load fijalists data
         print("Loading fijalists data...")
         fijalists_data = load_data('fijalists.json')
@@ -64,9 +78,14 @@ def seed_database():
         
         # Create fijalists
         print(f"Creating {len(fijalists_data)} fijalists...")
+        collections_added = 0
+        
         for fijalist_data in fijalists_data:
             # Extract tags list and remove from main data
             tags_list = fijalist_data.pop('tags', [])
+            
+            # Extract collections list and remove from main data
+            collections_list = fijalist_data.pop('collections', [])
             
             # Create the fijalist
             fijalist = FijaList(
@@ -77,6 +96,7 @@ def seed_database():
                 # created_at and updated_at will use the default values from your model
             )
             db.session.add(fijalist)
+            
             # Need to flush to get the fijalist ID
             db.session.flush()
             
@@ -84,16 +104,26 @@ def seed_database():
             for tag_name in tags_list:
                 if tag_name in all_tags:
                     fijalist.tags.append(all_tags[tag_name])
-        
-        # Create collections
-        print("Creating collections...")
-        collections_data = load_data('collections.json')
-        for collection_data in collections_data:
-            collection = Collection(**collection_data)
-            db.session.add(collection)
-        
+            
+            # Connect collections
+            if collections_list:
+                for collection_name in collections_list:
+                    if collection_name in all_collections:
+                        fijalist.collections.append(all_collections[collection_name])
+                        collections_added += 1
+                    else:
+                        print(f"Warning: Collection not found: {collection_name}")
+                
+        # Final commit
         db.session.commit()
-        print(f"Database seeded successfully with {len(fijalists_data)} fijalists, {len(users_data)} users, {len(collections_data)} collections and {len(all_tags)} tags!")
+        
+        # Print summary
+        print(f"\nDatabase seeded successfully with:")
+        print(f"- {len(fijalists_data)} fijalists")
+        print(f"- {len(users_data)} users")
+        print(f"- {len(collections_data)} collections")
+        print(f"- {len(all_tags)} tags")
+        print(f"- {collections_added} fijalist-collection relationships")
 
 if __name__ == "__main__":
     seed_database()

@@ -1,14 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 import useData from "../hooks/useData";
 import Modal from "./Modal";
+import type { Collection } from "~/lib/types";
 
-type AddTabModalProps = {
+type EditCollectionModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  collection: Collection | null;
 };
 
-const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
-  const { addCollection } = useData();
+const EditCollectionModal: React.FC<EditCollectionModalProps> = ({ 
+  isOpen, 
+  onClose, 
+  collection 
+}) => {
+  const { updateCollection } = useData();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,26 +23,32 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [isOpen]);
+    
+    if (collection) {
+      setName(collection.name);
+      setDescription(collection.description || "");
+    }
+  }, [isOpen, collection]);
 
-  const handleAdd = () => {
-    if (!name.trim()) return;
+  const handleUpdate = async () => {
+    if (!collection || !collection.id) return;
     
-    addCollection({
-      name: name.trim(),
-      is_private: false,
-      fijalists: [],
-      description: description.trim(),
-    });
+    const success = await updateCollection(
+      String(collection.id),
+      {
+        ...collection,
+        name: name.trim(),
+        description: description.trim()
+      }
+    );
     
-    // reset form
-    setName("");
-    setDescription("");
-    onClose();
+    if (success) {
+      onClose();
+    }
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Add New Collection">
+    <Modal isOpen={isOpen} onClose={onClose} title="Edit Collection">
       <div className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -75,11 +87,11 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
             Cancel
           </button>
           <button
-            onClick={handleAdd}
+            onClick={handleUpdate}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             disabled={!name.trim()}
           >
-            Add
+            Save
           </button>
         </div>
       </div>
@@ -87,4 +99,4 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default AddTabModal;
+export default EditCollectionModal; 

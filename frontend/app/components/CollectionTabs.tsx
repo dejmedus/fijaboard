@@ -129,15 +129,28 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
 
       {/* Masonry grid without a box, directly integrated */}
       <section className="flex flex-wrap gap-4 px-4 mb-4">
-        <MasonryGrid
-          items={itemsForGrid}
-          onItemClick={onItemClick}
-          lastItemRef={lastItemRef}
-        />
+        {itemsForGrid.length > 0 ? (
+          <MasonryGrid
+            items={itemsForGrid}
+            onItemClick={onItemClick}
+            lastItemRef={lastItemRef}
+          />
+        ) : (
+          <div className="w-full text-center py-8">
+            <p className="text-gray-500">No items in this collection</p>
+          </div>
+        )}
       </section>
 
       {/* Loading state when fetching new items */}
-      {loading && <div className="text-center py-4">Loading...</div>}
+      {loading && <div className="text-center py-4">Loading more items...</div>}
+
+      {/* show msg when no more items to load */}
+      {!loading && itemsForGrid.length > 0 && itemsForGrid.length === filteredItems.length && (
+        <div className="text-center py-4 text-gray-500 text-sm">
+          You've reached the end
+        </div>
+      )}
 
       {/* Add Tab Modal */}
       <AddTabModal

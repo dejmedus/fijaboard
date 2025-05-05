@@ -181,10 +181,9 @@ export default function Catalog() {
 
         {/* Collections Tabs */}
         <CollectionTabs
-          items={items}
+          items={fijalists}
           activeCollectionTab={activeCollectionTab}
           setActiveCollectionTab={setActiveCollectionTab}
-          lastItemRef={lastItemRef}
           onItemClick={handleFijalistClick}
         />
 

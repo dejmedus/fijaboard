@@ -48,12 +48,9 @@ export default function useInfiniteScroll<T>({
       
       observer.current = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
-          if (page * pageSize >= items.length) {
-            observer.current?.disconnect();
-            return;
+          if (page * pageSize < items.length) {
+            setPage(prev => prev + 1);
           }
-          
-          setPage(prev => prev + 1);
         }
       });
       

@@ -3,16 +3,16 @@
         "title": "Ernest Hemingway's Favorite Haunts in Florida",
         "description": "Explore Key West through the footsteps of the famous author who lived, wrote, and drank here from 1931-1939...",
         "cover_image": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np8LVnIwNe-oFVdyKZ0uBsA-LcKD41XmE6uA5LCQxG5fFgCBqlySf-NjjPCNSFiZBSKUQzGGMaQ6sldpe041UxYErSOW9jKKH-tkb0yOz736Qn2g4T3gyr1k_piU3Zg-znZM6Um=s1360-w1360-h1020",
-        "content": [
-          "Ernest Hemingway Home and Museum - Visit his Spanish Colonial house where he lived from 1931-1939...",
-          "Sloppy Joe's Bar - Hemingway's favorite drinking spot in Key West...",
-          "Captain Tony's Saloon - The original location of Sloppy Joe's where Hemingway first drank...",
-          "Blue Heaven Restaurant - Originally a boxing ring where Hemingway refereed matches...",
-          "Key West Lighthouse - Hemingway could see this lighthouse from his home...",
-          "Dry Tortugas National Park - Hemingway frequently sailed here on his boat 'Pilar'...",
-          "Bagatelle Restaurant - Originally the Bahama House, this mansion was built in 1840...",
-          "Key West First Legal Rum Distillery - While not directly connected to Hemingway..."
-        ],
+        "content":[
+          "Ernest Hemingway Home and Museum - Visit his Spanish Colonial house where he lived from 1931-1939 and wrote many famous works. Don't miss the 60+ six-toed cats, descendants of Hemingway's original polydactyl cat.",
+          "Sloppy Joe's Bar - Hemingway's favorite drinking spot in Key West, opened in 1933. He was a regular here and helped make it famous. The bar still hosts an annual Hemingway look-alike contest.",
+          "Captain Tony's Saloon - The original location of Sloppy Joe's where Hemingway first drank. The building dates to 1851 and was once an ice house, morgue, and telegraph office.",
+          "Blue Heaven Restaurant - Originally a boxing ring where Hemingway refereed matches in the 1930s. Now a charming restaurant with an open courtyard.",
+          "Key West Lighthouse - Hemingway could see this lighthouse from his home and used it as a landmark to find his way home after late nights out.",
+          "Dry Tortugas National Park - Hemingway frequently sailed here on his boat 'Pilar' for fishing trips. The pristine waters were among his favorite fishing spots.",
+          "Bagatelle Restaurant - Originally the Bahama House, this mansion was built in 1840 and was the residence of Hemingway's friend Tootie Roberts.",
+          "Key West First Legal Rum Distillery - While not directly connected to Hemingway, they offer a 'Hemingway Special' rum that pays homage to his love for mojitos and daiquiris."
+      ],
         "tags": ["literature", "florida", "key-west", "hemingway", "food-drink", "pubs"],
         "collections": ["Myshkin's Literary Journeys"],
         "created_at": null,
@@ -23,10 +23,10 @@
         "description": "A curated selection of Portland's finest coffee establishments...",
         "cover_image": "https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         "content": [
-          "Stumptown Coffee Roasters - The iconic Portland coffee brand known for...",
-          "Heart Coffee Roasters - Scandinavian-inspired coffee shop offering...",
-          "Coava Coffee Roasters - Industrial-chic cafe with single-origin..."
-        ],
+   "Stumptown Coffee Roasters - The iconic Portland coffee brand known for their direct trade practices and meticulous roasting. Their downtown location features exposed brick walls, industrial design elements, and baristas who are passionate about brewing the perfect cup. Try their Hair Bender blend for a complex flavor profile with notes of chocolate and citrus.",
+   "Heart Coffee Roasters - Scandinavian-inspired coffee shop offering minimalist aesthetics and light-roasted single-origin beans. Founded by Finnish native Wille Yli-Luoma, Heart focuses on highlighting the natural characteristics of each coffee variety. Their airy cafes feature white walls, blonde wood, and a selection of Nordic-inspired pastries to complement your coffee experience.",
+   "Coava Coffee Roasters - Industrial-chic cafe with single-origin offerings served in a renovated warehouse space. Known for their meticulous brewing methods including pour-over, Chemex, and AeroPress preparations. The spacious interior features reclaimed wood, concrete floors, and communal tables perfect for remote work or catching up with friends. Their Ethiopia Kilenso is a standout with bright berry notes."
+ ],
         "tags": ["coffee", "portland", "cafes"],
         "collections": ["Myshkin's Hidden Gems", "Urban Exploration"],
         "created_at": null,

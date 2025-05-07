@@ -10,6 +10,7 @@ type AddTabModalProps = {
 const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
   const { addCollection } = useData();
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -19,27 +20,53 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const handleAdd = () => {
-    setName("");
+    if (!name.trim()) return;
+    
     addCollection({
       name: name.trim(),
       is_private: false,
       fijalists: [],
-      description: "",
+      description: description.trim(),
     });
+    
+    // reset form
+    setName("");
+    setDescription("");
     onClose();
   };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Add New Collection">
       <div className="space-y-4">
-        <input
-          ref={inputRef}
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Collection Name"
-          className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Collection Name
+          </label>
+          <input
+            id="name"
+            ref={inputRef}
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Collection Name"
+            className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+            Description (Optional)
+          </label>
+          <input
+            id="description"
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Collection Description"
+            className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+        
         <div className="flex justify-end gap-2">
           <button
             onClick={onClose}
@@ -50,6 +77,7 @@ const AddTabModal: React.FC<AddTabModalProps> = ({ isOpen, onClose }) => {
           <button
             onClick={handleAdd}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            disabled={!name.trim()}
           >
             Add
           </button>

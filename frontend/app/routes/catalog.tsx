@@ -41,8 +41,8 @@ export default function Catalog() {
     if (selectedFilters.length === 0) return fijalists;
 
     return fijalists.filter((fijalist) =>
-      // check if fijalist has any of the selected tags
-      selectedFilters.some(
+      // check if fijalist has ALL of the selected tags
+      selectedFilters.every(
         (filterName) =>
           fijalist.tags && fijalist.tags.some((tag) => tag.name === filterName)
       )
@@ -181,10 +181,9 @@ export default function Catalog() {
 
         {/* Collections Tabs */}
         <CollectionTabs
-          items={items}
+          items={filteredFijalists}
           activeCollectionTab={activeCollectionTab}
           setActiveCollectionTab={setActiveCollectionTab}
-          lastItemRef={lastItemRef}
           onItemClick={handleFijalistClick}
         />
 

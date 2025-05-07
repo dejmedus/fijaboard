@@ -115,8 +115,6 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
       {/* Tabs */}
       <div className="flex flex-wrap gap-6 mb-6 px-4">
         {collectionNames.map((collectionTab, index) => {
-          const description = getCollectionDescription(index);
-  
           return (
             <div key={index} className="flex flex-col">
               <div className="flex items-center">
@@ -145,13 +143,6 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
                   </button>
                 )}
               </div>
-  
-              {/* Collection description */}
-              {description && (
-                <div className="text-xs text-gray-500 mt-1 max-w-xs truncate">
-                  {description}
-                </div>
-              )}
             </div>
           );
         })}
@@ -173,21 +164,29 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
       </div>
       {/* Active collection info bar */}
       {activeCollectionTab > 0 && collections?.[activeCollectionTab - 1] && (
-        <div className="px-4 mb-4 flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
-          <div className="text-lg font-medium text-blue-800">
-            🌟 {collections[activeCollectionTab - 1].name} (
-            {collections[activeCollectionTab - 1]?.fijalists?.length}{" "}
-            {collections[activeCollectionTab - 1]?.fijalists?.length === 1
-              ? "list"
-              : "lists"}
-            )
+        <div className="px-4 mb-4 flex flex-col bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="text-lg font-medium text-blue-800">
+              🌟 {collections[activeCollectionTab - 1].name} (
+              {collections[activeCollectionTab - 1]?.fijalists?.length}{" "}
+              {collections[activeCollectionTab - 1]?.fijalists?.length === 1
+                ? "list"
+                : "lists"}
+              )
+            </div>
+            <button
+              onClick={handleViewCollection}
+              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded-md transition"
+            >
+              View Collection
+            </button>
           </div>
-          <button
-            onClick={handleViewCollection}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded-md transition"
-          >
-            View Collection
-          </button>
+          {/* moving description here instead of in the tab */}
+          {collections[activeCollectionTab - 1].description && (
+            <div className="text-sm text-gray-700 mt-2">
+              {collections[activeCollectionTab - 1].description}
+            </div>
+          )}
         </div>
       )}
 

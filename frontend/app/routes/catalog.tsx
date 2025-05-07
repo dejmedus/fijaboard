@@ -36,11 +36,11 @@ export default function Catalog() {
   // filter fijalists based on selected tags
   const filteredFijalists = useMemo(() => {
     if (selectedFilters.length === 0) return fijalists;
-    
-    return fijalists.filter(fijalist => 
-      // check if fijalist has any of the selected tags
-      selectedFilters.some(filterName => 
-        fijalist.tags && fijalist.tags.some(tag => tag.name === filterName)
+    return fijalists.filter((fijalist) =>
+      // check if fijalist has ANY of the selected tags (using .some instead of .every)
+      selectedFilters.some(
+        (filterName) =>
+          fijalist.tags && fijalist.tags.some((tag) => tag.name === filterName)
       )
     );
   }, [fijalists, selectedFilters]);
@@ -171,12 +171,13 @@ export default function Catalog() {
         </button> */}
 
         {/* Collections Tabs */}
-        <CollectionTabs 
-          items={items}
+        <CollectionTabs
+          items={filteredFijalists}
           lastItemRef={lastItemRef}
-          onItemClick={handleFijalistClick} activeCollectionTab={0} setActiveCollectionTab={function (index: number): void {
-            throw new Error("Function not implemented.");
-          } }        />
+          activeCollectionTab={activeCollectionTab}
+          setActiveCollectionTab={setActiveCollectionTab}
+          onItemClick={handleFijalistClick}
+        />
 
         {/* show message when no items are available */}
         {!isLoading && items.length === 0 && (

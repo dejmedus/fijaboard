@@ -1,4 +1,4 @@
-## Fijabord 
+## Fijaboard 
 
 
 ### Run locally

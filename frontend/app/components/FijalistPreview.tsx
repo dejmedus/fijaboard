@@ -112,7 +112,7 @@ export default function FijalistPreview({
     return collection?.fijalists?.some(f => String(f.id) === String(fijalist.id)) || false;
   };
 
-  // Check if fijalist is part of the active collection
+  // ASH: check if fijalist is part of the active collection
   const isInCollection =
     activeCollectionTab > 0 &&
     collections[activeCollectionTab - 1]?.fijalists?.some(
@@ -164,7 +164,7 @@ export default function FijalistPreview({
         </button>
 
         <div className="flex items-center gap-2">
-          {/* Conditionally render buttons */}
+          {/* conditionally render buttons */}
           {isInCollection ? (
             <button
               onClick={async () => {

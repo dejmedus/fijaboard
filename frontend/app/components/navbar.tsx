@@ -39,7 +39,7 @@ export function NavLogo() {
         to="/"
         className="font-semibold text-neutral-800 hover:text-neutral-800/75 text-xl transition"
       >
-        FIJA
+        <img src="/logo.png" alt="FijaBoard Logo" className="h-16" />
       </Link>
     </div>
   );

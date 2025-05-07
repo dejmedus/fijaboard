@@ -30,10 +30,12 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState<Collection | null>(null);
+  const [showFullCollection, setShowFullCollection] = useState(false); // New state to track when to show full collection
 
   useEffect(() => {
     if (activeCollectionTab === 0) {
       setFilteredItems(items);
+      setShowFullCollection(false);
       return;
     }
 
@@ -45,30 +47,36 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
     const selectedCollection = collections[activeCollectionTab - 1];
 
     if (selectedCollection?.fijalists) {
-      // Step 1: Get all tag IDs from the collection's items
-      const collectionTagIDs = selectedCollection.fijalists.flatMap(item =>
-        (item.tags || []).map(tag => tag.id)
-      );
 
-      // Step 2: Filter global items based on matching tag IDs
-      const relatedItems = items.filter(item =>
-        item.tags?.some(tag => collectionTagIDs.includes(tag.id))
-      );
+      if (showFullCollection) {
+        // Only show items in the collection
+        setFilteredItems(selectedCollection.fijalists);
+      } else {
+        // Step 1: Get all tag IDs from the collection's items
+        const collectionTagIDs = selectedCollection.fijalists.flatMap(item =>
+          (item.tags || []).map(tag => tag.id)
+        );
 
-      // Step 3: Optionally include the collection's items themselves
-      const merged = [...selectedCollection.fijalists, ...relatedItems];
+        // Step 2: Filter global items based on matching tag IDs
+        const relatedItems = items.filter(item =>
+          item.tags?.some(tag => collectionTagIDs.includes(tag.id))
+        );
 
-      // Step 4: Deduplicate by ID
-      const deduped = merged.filter(
-        (item, index, self) =>
-          index === self.findIndex(i => i.id === item.id)
-      );
+        // Step 3: Optionally include the collection's items themselves
+        const merged = [...selectedCollection.fijalists, ...relatedItems];
 
-      setFilteredItems(deduped);
+        // Step 4: Deduplicate by ID
+        const deduped = merged.filter(
+          (item, index, self) =>
+            index === self.findIndex(i => i.id === item.id)
+        );
+
+        setFilteredItems(deduped);
+      }
     } else {
       setFilteredItems([]);
     }
-  }, [items, activeCollectionTab, collections]);
+  }, [items, activeCollectionTab, collections, showFullCollection]);
 
   // Infinite Scroll logic
   const {
@@ -80,10 +88,10 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
     pageSize: 10,
   });
 
+  // Handle viewing only collection items
   const handleViewCollection = () => {
     const selectedCollection = collections[activeCollectionTab - 1];
     if (selectedCollection?.fijalists) {
-      setFilteredItems(selectedCollection.fijalists); // Show only items in the collection
       setShowFullCollection(true); // Set flag to show full collection
     }
   };
@@ -119,7 +127,10 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
                       ? "text-blue-600 border-b-4 border-blue-600"
                       : "text-gray-600 hover:text-blue-600 hover:border-b-4 hover:border-blue-300"
                   }`}
-                  onClick={() => setActiveCollectionTab(index)}
+                  onClick={() => {
+                    setActiveCollectionTab(index);
+                    setShowFullCollection(false);
+                  }}
                 >
                   {collectionTab}
                 </div>
@@ -151,7 +162,7 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
           <div className="relative group">
             <div
               className="text-xl font-semibold cursor-pointer text-green-500 hover:text-green-600 transition-all"
-              onClick={() => setIsAddModalOpen(true)}
+              onClick={() => setIsAddModalOpen(true)} // open the add modal
             >
               +
             </div>
@@ -161,7 +172,6 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
           </div>
         )}
       </div>
-  
       {/* Active collection info bar */}
       {activeCollectionTab > 0 && collections?.[activeCollectionTab - 1] && (
         <div className="px-4 mb-4 flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
@@ -181,8 +191,8 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
           </button>
         </div>
       )}
-  
-      {/* Masonry Grid */}
+
+      {/* Masonry grid without a box, directly integrated */}
       <section className="flex flex-wrap gap-4 px-4 mb-4">
         {itemsForGrid.length > 0 ? (
           <MasonryGrid

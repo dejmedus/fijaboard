@@ -7,15 +7,13 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    // hyperui is a component boilerplate lib
-    // https://www.hyperui.dev/components/marketing/headers
     <header>
       <div className="mx-auto px-6 md:px-8 max-w-screen-2xl">
         <div className="flex items-center h-24">
           <NavLogo />
           <NavLinks />
           {!isLoading && (
-            <div className="md:flex gap-12">
+            <div className="flex gap-12">
               {user ? (
                 <UserMenu
                   user={user}
@@ -26,7 +24,6 @@ export default function Navbar() {
               ) : (
                 <AuthButtons />
               )}
-              <MobileMenuButton onClick={() => setIsMenuOpen(!isMenuOpen)} />
             </div>
           )}
         </div>
@@ -42,7 +39,7 @@ export function NavLogo() {
         to="/"
         className="font-semibold text-neutral-800 hover:text-neutral-800/75 text-xl transition"
       >
-        FijaBoard
+        FIJA
       </Link>
     </div>
   );
@@ -77,7 +74,7 @@ function UserMenu({
   setIsOpen: (isOpen: boolean) => void;
 }) {
   return (
-    <div className="hidden md:block md:relative">
+    <div className="block relative">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -85,11 +82,9 @@ function UserMenu({
       >
         <span className="sr-only">Toggle dashboard menu</span>
         <img
-          // FE images come from the public folder
-          // could store images somehow BE and then store url in db
           src={user?.profile_picture || "/default-avatar.png"}
           alt="User profile"
-          className="size-10 object-cover"
+          className="size-8 p-0.25 object-cover"
         />
       </button>
 
@@ -143,32 +138,6 @@ function AuthButtons() {
       >
         Sign up
       </Link>
-    </div>
-  );
-}
-
-function MobileMenuButton({ onClick }: { onClick: () => void }) {
-  return (
-    <div className="md:hidden block">
-      <button
-        onClick={onClick}
-        className="bg-neutral-100 p-2 rounded-sm text-neutral-600 hover:text-neutral-600/75 transition"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="size-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
     </div>
   );
 }

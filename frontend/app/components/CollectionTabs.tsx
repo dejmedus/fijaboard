@@ -26,11 +26,10 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
 
   const [filteredItems, setFilteredItems] = useState<Fijalist[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showFullCollection, setShowFullCollection] = useState(false); // New state to track when to show full collection
+  const [showFullCollection, setShowFullCollection] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState<Collection | null>(null);
-  const [showFullCollection, setShowFullCollection] = useState(false); // New state to track when to show full collection
 
   useEffect(() => {
     if (activeCollectionTab === 0) {

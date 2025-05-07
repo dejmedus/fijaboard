@@ -14,6 +14,7 @@ export default function Catalog() {
   const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [activeCollectionTab, setActiveCollectionTab] = useState(0);
   
   // restore scroll position when returning to catalog -- is this something we want to implement???
   useRestoreScrollPosition("catalog");

@@ -11,26 +11,23 @@ import FilterBar from "../components/FilterBar";
 import CollectionTabs from "~/components/CollectionTabs";
 
 export default function Catalog() {
-  const { fijalists, isLoading, error } = useData();
+  const { fijalists, isLoading } = useData();
   const [viewMode, setViewMode] = useState("grid"); // grid or map view
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-
+  
   // restore scroll position when returning to catalog -- is this something we want to implement???
   useRestoreScrollPosition("catalog");
-
+  
   // modal state
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [selectedFijalist, setSelectedFijalist] = useState<Fijalist | null>(
-    null
-  );
-  const [activeCollectionTab, setActiveCollectionTab] = useState(0);
-
+  const [selectedFijalist, setSelectedFijalist] = useState<Fijalist | null>(null);
+  
   // open preview modal with selected fijalist
   const handleFijalistClick = (fijalist: Fijalist) => {
     setSelectedFijalist(fijalist);
     setIsPreviewOpen(true);
   };
-
+  
   // close the preview modal
   const handleClosePreview = () => {
     setIsPreviewOpen(false);
@@ -39,33 +36,27 @@ export default function Catalog() {
   // filter fijalists based on selected tags
   const filteredFijalists = useMemo(() => {
     if (selectedFilters.length === 0) return fijalists;
-
-    return fijalists.filter((fijalist) =>
-      // check if fijalist has ALL of the selected tags
-      selectedFilters.every(
-        (filterName) =>
-          fijalist.tags && fijalist.tags.some((tag) => tag.name === filterName)
+    
+    return fijalists.filter(fijalist => 
+      // check if fijalist has any of the selected tags
+      selectedFilters.some(filterName => 
+        fijalist.tags && fijalist.tags.some(tag => tag.name === filterName)
       )
     );
   }, [fijalists, selectedFilters]);
-
+  
   // use infinite scroll with filtered fijalists
-  const {
-    displayedItems: items,
-    loading,
-    lastItemRef,
+  const { 
+    displayedItems: items, 
+    loading, 
+    lastItemRef 
   } = useInfiniteScroll<Fijalist>({
     items: filteredFijalists,
-    pageSize: 10,
+    pageSize: 10
   });
 
   return (
     <main className="min-h-screen bg-white">
-      {error && (
-        <div className="w-full mb-6 px-4 py-3 text-sm font-medium text-purple-600 bg-purple-50 rounded-lg hover:bg-purple-100 flex items-center justify-center">
-          {error}
-        </div>
-      )}
       <section className="max-w-7xl mx-auto px-4 py-4">
         {/* search/filter bar */}
         <header className="flex items-center justify-between mb-4">
@@ -152,7 +143,7 @@ export default function Catalog() {
         </header>
 
         {/* filter bar component */}
-        <FilterBar
+        <FilterBar 
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />
@@ -180,39 +171,30 @@ export default function Catalog() {
         </button> */}
 
         {/* Collections Tabs */}
-        <CollectionTabs
-          items={filteredFijalists}
-          activeCollectionTab={activeCollectionTab}
-          setActiveCollectionTab={setActiveCollectionTab}
-          onItemClick={handleFijalistClick}
-        />
+        <CollectionTabs 
+          items={items}
+          lastItemRef={lastItemRef}
+          onItemClick={handleFijalistClick} activeCollectionTab={0} setActiveCollectionTab={function (index: number): void {
+            throw new Error("Function not implemented.");
+          } }        />
 
         {/* show message when no items are available */}
         {!isLoading && items.length === 0 && (
           <div className="text-center py-12">
             <div className="inline-flex justify-center items-center w-16 h-16 bg-purple-100 rounded-full mb-4">
-              <svg
-                className="w-8 h-8 text-purple-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <h2 className="text-xl font-semibold mb-2">
-              {selectedFilters.length > 0
-                ? "No Lists Match Your Filters"
+              {selectedFilters.length > 0 
+                ? "No Lists Match Your Filters" 
                 : "No Lists Available"}
             </h2>
             <p className="text-gray-600 mb-6">
-              {selectedFilters.length > 0
-                ? "Try removing some filters or create a new list that matches your criteria."
+              {selectedFilters.length > 0 
+                ? "Try removing some filters or create a new list that matches your criteria." 
                 : "No fijalists have been created yet. Click the button above to create one!"}
             </p>
             {selectedFilters.length > 0 && (
@@ -240,18 +222,17 @@ export default function Catalog() {
         {/* loading state */}
         {loading && <LoadingSpinner />}
       </section>
-
+      
       {/* fijalist preview modal */}
-      <Modal
-        isOpen={isPreviewOpen}
+      <Modal 
+        isOpen={isPreviewOpen} 
         onClose={handleClosePreview}
         title="List Preview"
       >
         {selectedFijalist && (
-          <FijalistPreview
-            activeCollectionTab={activeCollectionTab}
-            fijalist={selectedFijalist}
-            onClose={handleClosePreview}
+          <FijalistPreview 
+            fijalist={selectedFijalist} 
+            onClose={handleClosePreview} 
           />
         )}
       </Modal>

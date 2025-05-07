@@ -5,7 +5,7 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import AddTabModal from "./AddCollection";
 import EditCollectionModal from "./EditCollection";
 import useData from "../hooks/useData";
-import useAuth from "../hooks/useAuth"; // Import the useAuth hook
+import useAuth from "../hooks/useAuth";
 
 interface CollectionTabsProps {
   items: Fijalist[];
@@ -25,6 +25,8 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
   const { collections, collectionNames } = useData();
 
   const [filteredItems, setFilteredItems] = useState<Fijalist[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showFullCollection, setShowFullCollection] = useState(false); // New state to track when to show full collection
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState<Collection | null>(null);
@@ -45,6 +47,7 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
     const selectedCollection = collections[activeCollectionTab - 1];
 
     if (selectedCollection?.fijalists) {
+
       if (showFullCollection) {
         // Only show items in the collection
         setFilteredItems(selectedCollection.fijalists);
@@ -114,17 +117,14 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
       <div className="flex flex-wrap gap-6 mb-6 px-4">
         {collectionNames.map((collectionTab, index) => {
           const description = getCollectionDescription(index);
-          
+  
           return (
-            <div
-              key={index}
-              className="flex flex-col"
-            >
+            <div key={index} className="flex flex-col">
               <div className="flex items-center">
                 <div
                   className={`text-xl font-semibold cursor-pointer transition-all ${
                     activeCollectionTab === index
-                      ? "text-blue-600 border-b-4 border-blue-600" // underline effect for active tab
+                      ? "text-blue-600 border-b-4 border-blue-600"
                       : "text-gray-600 hover:text-blue-600 hover:border-b-4 hover:border-blue-300"
                   }`}
                   onClick={() => {
@@ -134,8 +134,8 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
                 >
                   {collectionTab}
                 </div>
-                
-                {/* show edit button for user's collections (not the "All" tab) */}
+  
+                {/* Show edit button for user-created collections */}
                 {user && index > 0 && (
                   <button
                     onClick={(e) => handleEditClick(e, index)}
@@ -146,8 +146,8 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
                   </button>
                 )}
               </div>
-              
-              {/* description display */}
+  
+              {/* Collection description */}
               {description && (
                 <div className="text-xs text-gray-500 mt-1 max-w-xs truncate">
                   {description}
@@ -156,8 +156,8 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
             </div>
           );
         })}
-
-        {/* Show "+" button only if user is logged in */}
+  
+        {/* "+" Add tab button if user is logged in */}
         {user && (
           <div className="relative group">
             <div
@@ -172,7 +172,6 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
           </div>
         )}
       </div>
-
       {/* Active collection info bar */}
       {activeCollectionTab > 0 && collections?.[activeCollectionTab - 1] && (
         <div className="px-4 mb-4 flex items-center justify-between bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
@@ -207,27 +206,29 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
           </div>
         )}
       </section>
-
-      {/* Loading state when fetching new items */}
+  
+      {/* Loading state */}
       {loading && <div className="text-center py-4">Loading more items...</div>}
-
-      {/* show msg when no more items to load */}
-      {!loading && itemsForGrid.length > 0 && itemsForGrid.length === filteredItems.length && (
-        <div className="text-center py-4 text-gray-500 text-sm">
-          You've reached the end
-        </div>
-      )}
-
+  
+      {/* End message */}
+      {!loading &&
+        itemsForGrid.length > 0 &&
+        itemsForGrid.length === filteredItems.length && (
+          <div className="text-center py-4 text-gray-500 text-sm">
+            You've reached the end
+          </div>
+        )}
+  
       {/* Add Tab Modal */}
       <AddTabModal
-        isOpen={isAddModalOpen} // pass the state to the modal
+        isOpen={isAddModalOpen}
         onClose={() => {
           setActiveCollectionTab(collectionNames.length);
           setIsAddModalOpen(false);
-        }} // Close the modal
+        }}
       />
-
-      {/* edit collection modal */}
+  
+      {/* Edit Collection Modal */}
       <EditCollectionModal
         isOpen={isEditModalOpen}
         onClose={() => {
@@ -238,6 +239,7 @@ const CollectionTabs: React.FC<CollectionTabsProps> = ({
       />
     </div>
   );
+  
 };
 
 export default CollectionTabs;

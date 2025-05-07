@@ -22,24 +22,6 @@ const Footer = () => {
               </button>
             </div>
           </div>
-
-          <div>
-            <p className="font-semibold text-gray-800">Geting Started</p>
-            <div className="flex flex-col items-start mt-5 space-y-2">
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">Home</a>
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">About Us</a>
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">Meet our Partners</a>
-            </div>
-          </div>
-
-          <div>
-            <p className="font-semibold text-gray-800">Quick Links</p>
-            <div className="flex flex-col items-start mt-5 space-y-2">
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">Frequently Asked Questions</a>
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">Careers and Partnerships</a>
-              <a href="#" className="text-gray-600 hover:text-blue-500 hover:underline">Blog and Reviews</a>
-            </div>
-          </div>
         </div>
 
         <hr className="my-6 border-gray-200 md:my-8" />

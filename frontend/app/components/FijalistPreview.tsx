@@ -13,7 +13,7 @@ interface FijalistPreviewProps {
 
 export default function FijalistPreview({
   fijalist,
-  activeCollectionTab,
+  activeCollectionTab = 0, // Defaulting to 0 if undefined
   onClose,
 }: FijalistPreviewProps) {
   const { collections, addFijalistToCollection, removeFijalistFromCollection } =
@@ -112,6 +112,13 @@ export default function FijalistPreview({
     return collection?.fijalists?.some(f => String(f.id) === String(fijalist.id)) || false;
   };
 
+  // ASH: check if fijalist is part of the active collection
+  const isInCollection =
+    activeCollectionTab > 0 &&
+    collections[activeCollectionTab - 1]?.fijalists?.some(
+      (item) => item.id === fijalist.id
+    );
+
   return (
     <div className="flex flex-col">
       <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
@@ -157,8 +164,8 @@ export default function FijalistPreview({
         </button>
 
         <div className="flex items-center gap-2">
-          {/* if on collection tab remove from collection, other wise add to collection */}
-          {activeCollectionTab && activeCollectionTab !== 0 ? (
+          {/* conditionally render buttons */}
+          {isInCollection ? (
             <button
               onClick={async () => {
                 const collectionId = String(
@@ -194,6 +201,7 @@ export default function FijalistPreview({
               })}
             </select>
           )}
+          
           <Link
             to={`/fijalist/${String(fijalist.id)}`}
             className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"

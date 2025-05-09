@@ -5,6 +5,8 @@ from app.auth import auth
 
 @auth.route('/user', methods=['GET'])
 def get_user_data():
+    """Retrieves the current user's data including profile info and collections.
+    Returns authenticated user's data or 'authenticated: False' if no user is logged in."""
     if current_user.is_authenticated:
         return jsonify({
             "id": current_user.id,

@@ -7,6 +7,8 @@ from app.auth import auth
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    """Authenticates a user with email and password.
+    Returns 400/401 for invalid requests or credentials, or user data with 200 on success."""
     data = request.get_json()
 
     missing_credentials = not data or not data.get(

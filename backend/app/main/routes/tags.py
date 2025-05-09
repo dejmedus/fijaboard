@@ -5,6 +5,8 @@ from app.main import main
 
 @main.route('/tags', methods=['GET'])
 def get_tags():
+    """Retrieves all tags in the system.
+    Returns a JSON list of all tags with status code 200."""
     tags = Tag.query.all()
 
     return jsonify([{
@@ -14,6 +16,8 @@ def get_tags():
 
 @main.route('/tags/<int:id>', methods=['GET'])
 def get_tag(id):
+    """Retrieves a specific tag by ID.
+    Returns a 404 error if the tag doesn't exist or a JSON object with status code 200."""
     tag = Tag.query.get_or_404(id)
 
     return jsonify({
@@ -23,6 +27,8 @@ def get_tag(id):
 
 @main.route('/tags/<int:id>/fijalists', methods=['GET'])
 def get_tag_fijalists(id):
+    """Retrieves all FijaLists associated with a specific tag.
+    Returns a 404 error if the tag doesn't exist or a JSON list of FijaLists with status code 200."""
     tag = Tag.query.get_or_404(id)
 
     return jsonify([{
@@ -38,6 +44,8 @@ def get_tag_fijalists(id):
 
 @main.route('/tags', methods=['POST'])
 def create_tag():
+    """Creates a new tag from JSON data in the request body.
+    Expects a name field and returns the created tag with status code 201."""
     data = request.get_json()
 
     tag = Tag(name=data.get('name'))
@@ -53,6 +61,8 @@ def create_tag():
 
 @main.route('/tags/<int:id>', methods=['PUT'])
 def update_tag(id):
+    """Updates an existing tag with data from the request body.
+    Returns a 404 error if the tag doesn't exist or the updated tag with status code 200."""
     data = request.get_json()
 
     tag = Tag.query.get_or_404(id)
@@ -68,6 +78,8 @@ def update_tag(id):
 
 @main.route('/tags/<int:id>', methods=['DELETE'])
 def delete_tag(id):
+    """Deletes a tag by ID.
+    Returns a 404 error if the tag doesn't exist or success message with status code 200."""
     tag = Tag.query.get_or_404(id)
 
     db.session.delete(tag)

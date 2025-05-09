@@ -26,6 +26,113 @@ export default function FijalistPreview({
     if (content.length <= maxLength) return content;
     return content.substring(0, maxLength) + "...";
   };
+  
+  // Format fijalist content for better display
+  const formatFijalistContent = (content: any) => {
+    // ensure content is a string
+    const contentStr = String(content || '');
+    
+    const matches = [];
+    
+    try {
+      if (contentStr.trim().startsWith('[') && contentStr.trim().endsWith(']')) {
+        const items = JSON.parse(contentStr);
+        if (Array.isArray(items)) {
+          // limit to first 3 items for preview
+          const previewItems = items.slice(0, 3);
+          
+          return (
+            <div className="space-y-4">
+              {previewItems.map((item, index) => {
+                const parts = String(item).split(/ - (.+)/);
+                if (parts.length >= 2) {
+                  const title = parts[0].trim();
+                  // remove trailing commas
+                  const description = parts[1].trim().replace(/,$/, '');
+                  
+                  return (
+                    <div key={index} className="mb-3">
+                      <h3 className="font-bold text-md mb-1">{title}</h3>
+                      <p className="text-gray-700 text-sm">{truncateContent(description, 150)}</p>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={index} className="mb-3">
+                      <p className="text-gray-700 text-sm">{truncateContent(String(item).replace(/,$/, ''), 200)}</p>
+                    </div>
+                  );
+                }
+              })}
+              {items.length > 3 && (
+                <div className="text-purple-600 text-sm">
+                  +{items.length - 3} more items...
+                </div>
+              )}
+            </div>
+          );
+        }
+      }
+    } catch (e) {
+      // continue w pattern matching if JSON parsing fails
+    }
+    
+    // if JSON parsing failed, try to find titles and descriptions in the string
+    // split content by looking for patterns that look like titles
+    const splitByTitles = contentStr.split(/(?<=\.|,|\n)(?=[A-Z][^,\n.]+(?:,| -|$))/g);
+    
+    // limit to first 3 segments for preview
+    const previewSegments = splitByTitles.slice(0, 3);
+    
+    // process each potential title-description segment
+    const processedContent = previewSegments.map((segment, index) => {
+      const titleMatch = segment.match(/^([^-]+)(?:\s+-\s+|\n)(.+)$/s);
+      
+      if (titleMatch) {
+        const [_, title, description] = titleMatch;
+        const cleanDescription = description.trim().replace(/,$/, '');
+        
+        return (
+          <div key={index} className="mb-3">
+            <h3 className="font-bold text-md mb-1">{title.trim()}</h3>
+            <p className="text-gray-700 text-sm">{truncateContent(cleanDescription, 150)}</p>
+          </div>
+        );
+      }
+      
+      const lineBreakMatch = segment.match(/^([^\n]+)\n(.+)$/s);
+      if (lineBreakMatch) {
+        const [_, potentialTitle, description] = lineBreakMatch;
+        if (potentialTitle.trim().length < 100 && !potentialTitle.includes('.')) {
+          const cleanDescription = description.trim().replace(/,$/, '');
+          
+          return (
+            <div key={index} className="mb-3">
+              <h3 className="font-bold text-md mb-1">{potentialTitle.trim()}</h3>
+              <p className="text-gray-700 text-sm">{truncateContent(cleanDescription, 150)}</p>
+            </div>
+          );
+        }
+      }
+      
+      return (
+        <div key={index} className="mb-3">
+          <p className="text-gray-700 text-sm">{truncateContent(segment.trim().replace(/,$/, ''), 200)}</p>
+        </div>
+      );
+    });
+    
+    return (
+      <div className="space-y-4">
+        {processedContent}
+        {splitByTitles.length > 3 && (
+          <div className="text-purple-600 text-sm">
+            +{splitByTitles.length - 3} more items...
+          </div>
+        )}
+      </div>
+    );
+  };
 
   // handle click on the view full list button
   const handleViewFullList = () => {
@@ -150,9 +257,7 @@ export default function FijalistPreview({
       <p className="text-gray-600 mb-4">{fijalist.description}</p>
 
       <div className="prose mb-6">
-        <div className="whitespace-pre-wrap text-gray-700">
-          {truncateContent(fijalist.content)}
-        </div>
+        {formatFijalistContent(fijalist.content)}
       </div>
 
       <div className="flex justify-between mt-auto pt-4 border-t">

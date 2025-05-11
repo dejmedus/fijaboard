@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from app.extensions import db
+from wtforms import ValidationError
 
 class FijaList(db.Model):
     __tablename__ = 'fijalist'
@@ -36,3 +37,28 @@ class FijaList(db.Model):
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
+        
+    @staticmethod
+    def validate_title(form, field):
+        """Validate that the title is between 3 and 255 characters."""
+        if not field.data:
+            raise ValidationError('Title is required')
+        if len(field.data) < 3:
+            raise ValidationError('Title must be at least 3 characters')
+        if len(field.data) > 255:
+            raise ValidationError('Title cannot exceed 255 characters')
+    
+    @staticmethod
+    def validate_description(form, field):
+        """Validate that the description is not too long."""
+        if field.data and len(field.data) > 500:
+            raise ValidationError('Description cannot exceed 500 characters')
+    
+    @staticmethod
+    def validate_content(form, field):
+        """Validate that content exists and is in proper format."""
+        if not field.data:
+            raise ValidationError('Content is required')
+        # this is just to check that thecontent is a dictionary (JSON object)
+        if not isinstance(field.data, dict):
+            raise ValidationError('Content must be a valid JSON object')

@@ -7,6 +7,8 @@ from app.auth import auth
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """Registers a new user with the provided credentials.
+    Checks for existing email/username and returns 409 if taken or user data with 201 if successful."""
     data = request.get_json()
 
     email_taken = User.query.filter_by(email=data.get('email')).first()

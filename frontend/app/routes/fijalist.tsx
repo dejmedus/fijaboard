@@ -64,6 +64,104 @@ export default function FijalistDetail() {
   const handleCloseToast = () => {
     setToast(prev => ({ ...prev, visible: false }));
   };
+  
+  // Format fijalist content for better display
+  const formatFijalistContent = (content: any) => {
+    // ensure content is a string
+    const contentStr = String(content || '');
+    
+    // try to find patterns of "location - description" and separate them
+    // this regex captures location-description pairs by looking for patterns that start at the beginning of a line or after a period-comma
+    const matches = [];
+    
+    // first try direct JSON parsing
+    try {
+      if (contentStr.trim().startsWith('[') && contentStr.trim().endsWith(']')) {
+        const items = JSON.parse(contentStr);
+        if (Array.isArray(items)) {
+          return (
+            <div className="space-y-8">
+              {items.map((item, index) => {
+                const parts = String(item).split(/ - (.+)/);
+                if (parts.length >= 2) {
+                  const title = parts[0].trim();
+                  // remove trailing commas from description
+                  let description = parts[1].trim();
+                  description = description.replace(/,$/, '');
+                  
+                  return (
+                    <div key={index} className="mb-6">
+                      <h3 className="font-bold text-lg mb-2">{title}</h3>
+                      <p className="text-gray-700">{description}</p>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={index} className="mb-6">
+                      <p className="text-gray-700">{String(item).replace(/,$/, '')}</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          );
+        }
+      }
+    } catch (e) {
+      // continue w pattern matching if JSON parsing fails
+    }
+    
+    // if JSON parsing failed, try to find titles and descriptions in the string
+    // split content by looking for patterns that look like titles
+    // this regex looks for phrases that end with a location name followed by a newline or comma-period
+    const splitByTitles = contentStr.split(/(?<=\.|,|\n)(?=[A-Z][^,\n.]+(?:,| -|$))/g);
+    
+    // process each potential title-description segment
+    const processedContent = splitByTitles.map((segment, index) => {
+      // try to find title and description within each segment
+      const titleMatch = segment.match(/^([^-]+)(?:\s+-\s+|\n)(.+)$/s);
+      
+      if (titleMatch) {
+        const [_, title, description] = titleMatch;
+        // remove trailing commas from description
+        const cleanDescription = description.trim().replace(/,$/, '');
+        
+        return (
+          <div key={index} className="mb-6">
+            <h3 className="font-bold text-lg mb-2">{title.trim()}</h3>
+            <p className="text-gray-700">{cleanDescription}</p>
+          </div>
+        );
+      }
+      
+      // check for a line break bw title and description
+      const lineBreakMatch = segment.match(/^([^\n]+)\n(.+)$/s);
+      if (lineBreakMatch) {
+        const [_, potentialTitle, description] = lineBreakMatch;
+        // ensure potential title looks like a title (short, no periods)
+        if (potentialTitle.trim().length < 100 && !potentialTitle.includes('.')) {
+          // remove trailing commas from description
+          const cleanDescription = description.trim().replace(/,$/, '');
+          
+          return (
+            <div key={index} className="mb-6">
+              <h3 className="font-bold text-lg mb-2">{potentialTitle.trim()}</h3>
+              <p className="text-gray-700">{cleanDescription}</p>
+            </div>
+          );
+        }
+      }
+      
+      // if no clear title/description pattern, just display the segment
+      return (
+        <div key={index} className="mb-6">
+          <p className="text-gray-700">{segment.trim().replace(/,$/, '')}</p>
+        </div>
+      );
+    });
+    
+    return <div className="space-y-8">{processedContent}</div>;
+  };
 
   // get current fijalist based on ID from route params
   useEffect(() => {
@@ -245,7 +343,7 @@ export default function FijalistDetail() {
               
               {/* main list */}
               <div className="prose max-w-none">
-                <div className="whitespace-pre-wrap">{currentFijalist.content}</div>
+                {formatFijalistContent(currentFijalist.content)}
               </div>
             </div>
           </div>

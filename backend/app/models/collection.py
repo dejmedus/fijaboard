@@ -24,6 +24,7 @@ class Collection(db.Model):
         return f'<Collection {self.id}: {self.name}>'
     
     def to_dict(self):
+        """ Converts the collection into a dictionary """
         return {
             'id': self.id,
             'user_id': self.user_id,

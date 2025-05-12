@@ -20,6 +20,7 @@ class RouteTest(AppTestCase):
 
     def setUp(self, app):
         with app.app_context():
+            db.drop_all()
             db.create_all()
             
             self.user = User(username='bob', email='bob@pigeonmail.com')

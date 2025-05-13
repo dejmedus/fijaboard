@@ -1,5 +1,6 @@
 """Create database models to represent tables."""
-from flask_login import UserMixin
+from flask_login import UserMixin # type: ignore
+from wtforms import ValidationError # type: ignore
 # sqlalcehmy.orm is used a lot in the docs, but I didnt notice it in slides/labs
 # from sqlalchemy.orm import backref
 from datetime import datetime, timezone
@@ -31,19 +32,15 @@ class User(db.Model, UserMixin):
     
     # optional password management methods that Claude recommended :)
     def set_password(self, password):
-        """Function that hashes and sets the user's password """
         from app.extensions import bcrypt
-        # bycrypt scrambles the password so it can't be read easily instead of storing it directly.
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
     
     def check_password(self, password):
-        """Function that validates password against the saved password that was set during creation"""
         from app.extensions import bcrypt
         return bcrypt.check_password_hash(self.password_hash, password)
     
     # don't expose the password hash when converting the data
     def to_dict(self):
-        """ Function that converts user info into a dictionary, leaves password out for safety"""
         return {
             'id': self.id,
             'username': self.username,
@@ -53,5 +50,21 @@ class User(db.Model, UserMixin):
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
     
+    @staticmethod
+    def validate_email(form, field):
+        """Email must be non-empty and under 200 characters."""
+        if not field.data:
+            raise ValidationError('Email is required')
+        if len(field.data) > 200:
+            raise ValidationError('Email cannot exceed 200 characters')
+
+    @staticmethod
+    def validate_password_hash(form, field):
+        """Password must be at least 6 characters."""
+        if not field.data:
+            raise ValidationError('Password is required')
+        if len(field.data) < 6:
+            raise ValidationError('Password must be at least 6 characters')
+        
     def __repr__(self):
         return f'<User: {self.username}>'

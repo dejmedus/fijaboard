@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from app.extensions import db
-from wtforms import ValidationError
+from wtforms import ValidationError # type: ignore
 
 class FijaList(db.Model):
     __tablename__ = 'fijalist'

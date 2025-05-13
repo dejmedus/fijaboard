@@ -1,5 +1,5 @@
 from flask import jsonify
-from flask_login import current_user
+from flask_login import current_user # type: ignore
 from app.auth import auth
 
 

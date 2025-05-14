@@ -1,5 +1,7 @@
 from datetime import datetime, timezone
 from app.extensions import db
+from wtforms import ValidationError # type: ignore
+
 
 class Collection(db.Model):
     __tablename__ = 'collection'
@@ -19,11 +21,28 @@ class Collection(db.Model):
     
     # relationship with FijaLists through the fijalist_collection join table
     fijalists = db.relationship('FijaList', secondary='fijalist_collection', back_populates='collections')
+
+    @staticmethod
+    def validate_name(form, field):
+        """Name must be between 3 and 255 characters."""
+        if not field.data:
+            raise ValidationError('Name is required')
+        if len(field.data) < 3:
+            raise ValidationError('Name must be at least 3 characters')
+        if len(field.data) > 255:
+            raise ValidationError('Name cannot exceed 255 characters')
+
+    @staticmethod
+    def validate_description(form, field):
+        """Description must not exceed 500 characters."""
+        if field.data and len(field.data) > 500:
+            raise ValidationError('Description cannot exceed 500 characters')
     
     def __repr__(self):
         return f'<Collection {self.id}: {self.name}>'
     
     def to_dict(self):
+        """ Converts the collection into a dictionary """
         return {
             'id': self.id,
             'user_id': self.user_id,

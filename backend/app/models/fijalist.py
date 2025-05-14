@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from app.extensions import db
-from wtforms import ValidationError
+from wtforms import ValidationError # type: ignore
 
 class FijaList(db.Model):
     __tablename__ = 'fijalist'
@@ -28,6 +28,7 @@ class FijaList(db.Model):
     # after returning data fr API endpts, convert model instances to JSON, handles 
     # conversion of datetime objects to ISO format strings
     def to_dict(self):
+        """ Converts into a dictionary """
         return {
             'id': self.id,
             'title': self.title,

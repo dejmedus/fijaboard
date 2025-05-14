@@ -1,5 +1,6 @@
 """Create database models to represent tables."""
-from flask_login import UserMixin
+from flask_login import UserMixin # type: ignore
+from wtforms import ValidationError # type: ignore
 # sqlalcehmy.orm is used a lot in the docs, but I didnt notice it in slides/labs
 # from sqlalchemy.orm import backref
 from datetime import datetime, timezone
@@ -49,5 +50,21 @@ class User(db.Model, UserMixin):
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
     
+    @staticmethod
+    def validate_email(form, field):
+        """Email must be non-empty and under 200 characters."""
+        if not field.data:
+            raise ValidationError('Email is required')
+        if len(field.data) > 200:
+            raise ValidationError('Email cannot exceed 200 characters')
+
+    @staticmethod
+    def validate_password_hash(form, field):
+        """Password must be at least 6 characters."""
+        if not field.data:
+            raise ValidationError('Password is required')
+        if len(field.data) < 6:
+            raise ValidationError('Password must be at least 6 characters')
+        
     def __repr__(self):
         return f'<User: {self.username}>'
